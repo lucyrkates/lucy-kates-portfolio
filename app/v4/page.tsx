@@ -37,8 +37,8 @@ export default function V4() {
         @font-face { font-family: 'Quiny'; src: url('/fonts/quiny.ttf') format('truetype'); font-weight: normal; font-style: normal; }
         @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-        .v4-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: 'Caveat', cursive; }
-        .v4-nav a { font-size: 14px; color: #0A0A0A; text-decoration: none; padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(10,10,10,0.18); opacity: 0.5; transition: opacity 0.15s, background 0.15s, color 0.15s; }
+        .v4-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: var(--font-inria-sans), serif; }
+        .v4-nav a { font-size: 14px; color: #0A0A0A; text-decoration: none; padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(10,10,10,0.18); opacity: 0.5; transition: opacity 0.15s, background 0.15s, color 0.15s; display: inline-flex; align-items: center; justify-content: center; }
         .v4-nav a:hover { opacity: 0.75; }
         .v4-nav a.active { background: #0A0A0A; color: #fff; border-color: transparent; opacity: 1; }
 

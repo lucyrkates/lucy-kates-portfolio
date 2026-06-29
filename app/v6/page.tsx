@@ -79,8 +79,8 @@ export default function V6() {
         @font-face { font-family: 'LucyOutline';     src: url('/fonts/lucy-outline.otf')      format('opentype'); font-display: block; }
         @font-face { font-family: 'LucyFont';        src: url('/fonts/lucy-font.otf')         format('opentype'); font-display: block; }
 
-        .v6-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: 'LucyFont', sans-serif; }
-        .v6-nav a { font-size: 14px; color: #0b4a52; text-decoration: none; padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(11,74,82,0.25); opacity: 0.5; transition: opacity 0.15s, background 0.15s, color 0.15s; }
+        .v6-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: var(--font-inria-sans), serif; }
+        .v6-nav a { font-size: 14px; color: #0b4a52; text-decoration: none; padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(11,74,82,0.25); opacity: 0.5; transition: opacity 0.15s, background 0.15s, color 0.15s; display: inline-flex; align-items: center; justify-content: center; }
         .v6-nav a:hover { opacity: 0.75; }
         .v6-nav a.active { background: #0b4a52; color: #fff; border-color: transparent; opacity: 1; }
 
