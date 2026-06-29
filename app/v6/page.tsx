@@ -421,9 +421,9 @@ export default function V6() {
 
           {/* Footer */}
           <footer style={{ paddingTop: 56, display: "flex", gap: 20 }}>
-            <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 13, letterSpacing: "0.04em" }}>Reach out</a>
-            <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 13, letterSpacing: "0.04em" }}>Resume</a>
-            <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 13, letterSpacing: "0.04em" }}>LinkedIn</a>
+            <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Reach out</a>
+            <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Resume</a>
+            <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>LinkedIn</a>
           </footer>
 
         </div>
