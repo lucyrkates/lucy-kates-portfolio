@@ -93,7 +93,7 @@ export default function V6() {
         .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; }
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
 
-        .v6-dimlink { text-decoration: none; color: #0b4a52; opacity: 0.45; transition: opacity 0.15s; }
+        .v6-dimlink { text-decoration: none; color: #000; opacity: 0.45; transition: opacity 0.15s; }
         .v6-dimlink:hover { opacity: 1; }
 
         @keyframes v6in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
