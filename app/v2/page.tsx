@@ -1,9 +1,10 @@
 import Link from "next/link";
 
-export default function Home() {
+export default function V2() {
   return (
     <>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
         @keyframes v2in { from { opacity: 0; } to { opacity: 1; } }
         @keyframes v2rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
         .v2a { animation: v2in 0.7s ease both; }
@@ -18,7 +19,18 @@ export default function Home() {
         a.v2-plain { text-decoration: none; color: inherit; display: block; }
         a.v2-dim { text-decoration: none; color: inherit; opacity: 0.4; transition: opacity 0.15s; }
         a.v2-dim:hover { opacity: 0.75; }
+        .ver-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 18px; font-family: 'Caveat', cursive; }
+        .ver-nav a { font-size: 15px; color: #0A0A0A; text-decoration: none; opacity: 0.28; transition: opacity 0.15s; }
+        .ver-nav a:hover { opacity: 0.65; }
+        .ver-nav a.active { opacity: 0.85; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
       `}</style>
+
+      <nav className="ver-nav">
+        <Link href="/v2" className="active">Basic</Link>
+        <Link href="/v6">Journal</Link>
+        <Link href="/v7">Playful</Link>
+        <Link href="/v4">V4</Link>
+      </nav>
 
       <main style={{
         minHeight: "100vh",
@@ -30,7 +42,7 @@ export default function Home() {
         justifyContent: "center",
         padding: "80px 32px",
       }}>
-        <div style={{ width: "100%", maxWidth: "600px" }}>
+        <div style={{ width: "100%", maxWidth: "500px" }}>
 
           {/* Name */}
           <div className="v2a" style={{ marginBottom: "24px" }}>
@@ -67,11 +79,8 @@ export default function Home() {
             }}>
               Senior Product Designer
             </p>
-            <p style={{ fontSize: "15px", lineHeight: 1.72, opacity: 0.58 }}>
-              Senior Product Designer with 6+ years across enterprise and consumer platforms.
-              Currently leading design for credibility features on the LinkedIn profile, with past
-              experience in enterprise SaaS and AI products. Brings systems thinking to ambiguous
-              problems and cares deeply about equitable, human-centered design.
+            <p style={{ fontSize: "15px", lineHeight: 1.72, opacity: 0.58, maxWidth: "440px" }}>
+              6+ years across enterprise and consumer platforms. Currently leading design for credibility features on the LinkedIn profile.
             </p>
           </div>
 
@@ -80,6 +89,7 @@ export default function Home() {
             <div style={{
               paddingBottom: "12px",
               borderBottom: "1px solid rgba(10,10,10,0.08)",
+              marginBottom: "0",
             }}>
               <span style={{ fontFamily: "var(--font-cabin), sans-serif", fontWeight: 700, fontSize: "9px", letterSpacing: "0.26em", textTransform: "uppercase", opacity: 0.32 }}>
                 Work
