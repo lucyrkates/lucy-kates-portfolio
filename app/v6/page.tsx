@@ -101,6 +101,16 @@ export default function V6() {
         .v6b { animation: v6in 0.65s ease 0.12s both; }
         .v6c { animation: v6in 0.65s ease 0.24s both; }
         .v6d { animation: v6in 0.65s ease 0.36s both; }
+
+        @media (max-width: 680px) {
+          .v6-main { padding: 72px 20px 40px !important; }
+          .v6-name h1 { font-size: clamp(52px, 14vw, 113px) !important; letter-spacing: -3px !important; white-space: normal !important; }
+          .v6-bio-row { flex-direction: column-reverse !important; }
+          .v6-bio-polaroid { display: flex; justify-content: center; }
+          .v6-proj-row { flex-direction: column !important; }
+          .v6-polaroid-row { flex-direction: column !important; align-items: center !important; gap: 40px !important; }
+          .v6-tape { display: none !important; }
+        }
       `}</style>
 
       <nav className="v6-nav">
@@ -108,7 +118,7 @@ export default function V6() {
         <Link href="/v4">Concept 2</Link>
       </nav>
 
-      <main style={{
+      <main className="v6-main" style={{
         background: "#fafaf6",
         backgroundImage: "radial-gradient(circle, rgba(11,74,82,0.16) 1px, transparent 1px)",
         backgroundSize: "22px 22px",
@@ -117,10 +127,10 @@ export default function V6() {
         justifyContent: "center",
         padding: "100px 40px",
       }}>
-        <div style={{ width: 805, display: "flex", flexDirection: "column", gap: 48 }}>
+        <div style={{ maxWidth: 805, width: "100%", display: "flex", flexDirection: "column", gap: 48 }}>
 
           {/* Name — double layer */}
-          <div className="v6a" style={{ textAlign: "center", position: "relative" }}>
+          <div className="v6a v6-name" style={{ textAlign: "center", position: "relative" }}>
             <h1 style={{
               fontFamily: LUCY_OUTLINE,
               fontSize: 113, fontWeight: "normal", lineHeight: "normal",
@@ -141,7 +151,7 @@ export default function V6() {
           </div>
 
           {/* Bio row */}
-          <div className="v6b" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+          <div className="v6b v6-bio-row" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
             <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12 }}>
               <h2 style={{
                 fontFamily: LUCY_FONT_BOLD, fontSize: 40, fontWeight: "normal",
@@ -157,7 +167,7 @@ export default function V6() {
               </p>
             </div>
             {/* Polaroid photo */}
-            <div style={{ flexShrink: 0 }}>
+            <div className="v6-bio-polaroid" style={{ flexShrink: 0 }}>
               <div style={{ transform: "rotate(4deg)" }}>
                 <div className="v6-polaroid">
                   <img src={imgLucyPhoto} alt="Lucy" style={{ height: 268 }} />
@@ -183,7 +193,7 @@ export default function V6() {
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
 
               {/* Row 1 */}
-              <div style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
+              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
 
                 {/* Relationship map sticker */}
                 <a
@@ -256,7 +266,7 @@ export default function V6() {
               </div>
 
               {/* Row 2 */}
-              <div style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
+              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
 
                 {/* Microsoft sticker */}
                 <div className="v6-sticker">
@@ -394,7 +404,7 @@ export default function V6() {
             </div>
 
             {/* Polaroids */}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative" }}>
+            <div className="v6-polaroid-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative" }}>
               <div style={{ transform: "rotate(1deg)" }}>
                 <div className="v6-polaroid">
                   <img src={imgBackpacking} alt="Backpacking in Canada" />
@@ -413,9 +423,9 @@ export default function V6() {
                   <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>Biking in my first triatholon</p>
                 </div>
               </div>
-              <img src="/images/tape-01.png" alt="" style={{ position: "absolute", left: 55, top: -28, width: 130, pointerEvents: "none" }} />
-              <img src="/images/tape-02.png" alt="" style={{ position: "absolute", left: 308, top: -26, width: 150, transform: "rotate(-1.33deg)", pointerEvents: "none" }} />
-              <img src="/images/tape-03.png" alt="" style={{ position: "absolute", left: 612, top: -30, width: 130, transform: "rotate(3deg)", pointerEvents: "none" }} />
+              <img src="/images/tape-01.png" alt="" className="v6-tape" style={{ position: "absolute", left: 55, top: -28, width: 130, pointerEvents: "none" }} />
+              <img src="/images/tape-02.png" alt="" className="v6-tape" style={{ position: "absolute", left: 308, top: -26, width: 150, transform: "rotate(-1.33deg)", pointerEvents: "none" }} />
+              <img src="/images/tape-03.png" alt="" className="v6-tape" style={{ position: "absolute", left: 612, top: -30, width: 130, transform: "rotate(3deg)", pointerEvents: "none" }} />
             </div>
           </div>
 

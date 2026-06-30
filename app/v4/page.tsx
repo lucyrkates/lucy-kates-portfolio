@@ -61,6 +61,20 @@ export default function V4() {
         .v4a { animation: v4in 0.65s ease both; }
         .v4b { animation: v4in 0.65s ease 0.14s both; }
         .v4c { animation: v4in 0.65s ease 0.28s both; }
+
+        @media (max-width: 680px) {
+          .v4-hero { padding: 72px 24px 32px !important; }
+          .v4-hero h1 { white-space: normal !important; }
+          .v4-bio-wrap { padding: 0 24px !important; }
+          .v4-bio-inner { flex-direction: column !important; align-items: flex-start !important; }
+          .v4-projects { padding: 32px 24px 24px !important; }
+          .v4-interests-wrap { padding: 48px 24px !important; }
+          .v4-polaroids-wrap { padding: 0 24px 48px !important; }
+          .v4-card-row { flex-direction: column !important; }
+          .v4-polaroid-row { flex-direction: column !important; align-items: center !important; gap: 40px !important; }
+          .v4-tape { display: none !important; }
+          .v4-footer { padding: 48px 24px !important; }
+        }
       `}</style>
 
       <nav className="v4-nav">
@@ -71,7 +85,7 @@ export default function V4() {
       <main style={{ background: "#fdfbf3", color: "#0A0A0A" }}>
 
         {/* Hero */}
-        <header className="v4a" style={{ textAlign: "center", padding: "80px 120px 40px" }}>
+        <header className="v4a v4-hero" style={{ textAlign: "center", padding: "80px 120px 40px" }}>
           <h1 style={{
             fontFamily: "'Quiny', sans-serif",
             fontWeight: 400,
@@ -87,8 +101,8 @@ export default function V4() {
         </header>
 
         {/* Feature: photo + tagline + bio */}
-        <div className="v4b" style={{ display: "flex", justifyContent: "center", padding: "0 120px" }}>
-          <div style={{ display: "flex", gap: 48, alignItems: "center", maxWidth: 800, width: "100%" }}>
+        <div className="v4b v4-bio-wrap" style={{ display: "flex", justifyContent: "center", padding: "0 120px" }}>
+          <div className="v4-bio-inner" style={{ display: "flex", gap: 48, alignItems: "center", maxWidth: 800, width: "100%" }}>
             <div style={{ flexShrink: 0, padding: "24px 0" }}>
               <img
                 src={imgPhotoOfLucy}
@@ -124,7 +138,7 @@ export default function V4() {
         </div>
 
         {/* Projects (wave divider lives here) */}
-        <section className="v4c" style={{ padding: "32px 80px 24px", display: "flex", flexDirection: "column", gap: 24, alignItems: "center" }}>
+        <section className="v4c v4-projects" style={{ padding: "32px 80px 24px", display: "flex", flexDirection: "column", gap: 24, alignItems: "center" }}>
 
           {/* Wavy divider + title grouped so wave sits close to title */}
           <div style={{ maxWidth: 800, width: "100%", display: "flex", flexDirection: "column", gap: 32 }}>
@@ -149,7 +163,7 @@ export default function V4() {
           <div style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 800, width: "100%" }}>
 
             {/* Row 1 */}
-            <div style={{ display: "flex", gap: 24 }}>
+            <div className="v4-card-row" style={{ display: "flex", gap: 24 }}>
               <div className="v4-card">
                 <div className="v4-card-img">
                   <img src="/images/aura.png" alt="Project Aura" />
@@ -175,7 +189,7 @@ export default function V4() {
             </div>
 
             {/* Row 2 */}
-            <div style={{ display: "flex", gap: 24 }}>
+            <div className="v4-card-row" style={{ display: "flex", gap: 24 }}>
               <a href="https://www.linkedin.com/business/sales/blog/product-updates/powering-linkedin-with-sales-navigator-insights-and-ai-assisted-introductions" target="_blank" rel="noopener noreferrer" className="v4-card v4-card-link">
                 <div className="v4-card-img">
                   <img src={imgRelationshipMap} alt="Relationship map" />
@@ -205,7 +219,7 @@ export default function V4() {
 
         {/* Interests */}
         <section>
-          <div style={{ display: "flex", justifyContent: "center", padding: "48px 120px" }}>
+          <div className="v4-interests-wrap" style={{ display: "flex", justifyContent: "center", padding: "48px 120px" }}>
             <div style={{ maxWidth: 800, width: "100%", display: "flex", flexDirection: "column", gap: 24 }}>
               <h2 style={{
                 fontFamily: INRIA,
@@ -228,8 +242,8 @@ export default function V4() {
           </div>
 
           {/* Polaroids */}
-          <div style={{ display: "flex", justifyContent: "center", padding: "0 120px 48px" }}>
-            <div style={{ maxWidth: 800, width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative" }}>
+          <div className="v4-polaroids-wrap" style={{ display: "flex", justifyContent: "center", padding: "0 120px 48px" }}>
+            <div className="v4-polaroid-row" style={{ maxWidth: 800, width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", position: "relative" }}>
               <div style={{ transform: "rotate(1deg)" }}>
                 <div className="v4-polaroid">
                   <img src={imgBackpacking} alt="Backpacking in Canada" />
@@ -255,20 +269,15 @@ export default function V4() {
                 </div>
               </div>
 
-              {/* Tape — polaroid 1 */}
-              <img src="/images/tape-01.png" alt="" style={{ position: "absolute", left: 55, top: -28, width: 130, pointerEvents: "none" }} />
-
-              {/* Tape — polaroid 2 */}
-              <img src="/images/tape-02.png" alt="" style={{ position: "absolute", left: 308, top: -26, width: 150, transform: "rotate(-1.33deg)", pointerEvents: "none" }} />
-
-              {/* Tape — polaroid 3 */}
-              <img src="/images/tape-03.png" alt="" style={{ position: "absolute", left: 612, top: -30, width: 130, transform: "rotate(3deg)", pointerEvents: "none" }} />
+              <img src="/images/tape-01.png" alt="" className="v4-tape" style={{ position: "absolute", left: 55, top: -28, width: 130, pointerEvents: "none" }} />
+              <img src="/images/tape-02.png" alt="" className="v4-tape" style={{ position: "absolute", left: 308, top: -26, width: 150, transform: "rotate(-1.33deg)", pointerEvents: "none" }} />
+              <img src="/images/tape-03.png" alt="" className="v4-tape" style={{ position: "absolute", left: 612, top: -30, width: 130, transform: "rotate(3deg)", pointerEvents: "none" }} />
             </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer style={{ padding: "56px 120px 56px" }}>
+        <footer className="v4-footer" style={{ padding: "56px 120px 56px" }}>
           <p style={{ fontFamily: INRIA, fontWeight: 700, fontSize: 16, color: "#000", margin: "0 0 16px" }}>
             Let&apos;s work together
           </p>
