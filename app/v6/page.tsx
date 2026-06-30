@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 const imgLucyPhoto    = "https://www.figma.com/api/mcp/asset/79084d02-d640-488a-bd0a-2d4ab98fb716";
-const imgWaveProjects = "https://www.figma.com/api/mcp/asset/25e63ecf-523e-4e6e-98a8-fc68ec71bd29";
-const imgWaveAbout    = "https://www.figma.com/api/mcp/asset/9c15a0d8-c8e1-4e1b-a4d5-ae34aa44aba6";
+const imgWaveProjects = "/images/wave-projects.svg";
+const imgWaveAbout    = "/images/wave-about.svg";
 const imgUnionBorder  = "https://www.figma.com/api/mcp/asset/5cd6e895-0496-4abe-aeaa-71692cf9c435";
 const imgRelMap       = "https://www.figma.com/api/mcp/asset/65210a34-cded-4283-94c0-33ec477be7df";
 const imgSalesPhone1  = "https://www.figma.com/api/mcp/asset/6ffcc478-12fb-4fd5-b45d-d315099b2297";
@@ -90,8 +90,9 @@ export default function V6() {
         .v6-sticker-img:hover { transform: rotate(2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
         .v6-sticker-img-l:hover { transform: rotate(-2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
 
-        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; }
+        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: box-shadow 0.2s ease; }
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
+        .v6-polaroid:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.13); }
 
         .v6-dimlink { text-decoration: none; color: #000; opacity: 0.45; transition: opacity 0.15s; }
         .v6-dimlink:hover { opacity: 1; }
@@ -113,9 +114,6 @@ export default function V6() {
           .v6-polaroid-row > div:nth-child(2) { align-self: flex-end; }
           .v6-polaroid-row > div:nth-child(3) { align-self: center; }
           .v6-tape { display: none !important; }
-          .v6-footer-links { flex-direction: row !important; gap: 0 !important; }
-          .v6-footer-links a::after { content: " • "; opacity: 0.3; margin: 0 2px; }
-          .v6-footer-links a:last-child::after { content: ""; }
         }
       `}</style>
 
@@ -143,8 +141,8 @@ export default function V6() {
               letterSpacing: "-7.91px", color: "#ffa617",
               mixBlendMode: "multiply", textTransform: "uppercase",
               margin: 0, whiteSpace: "nowrap",
-              position: "absolute", top: -5, left: "50%",
-              transform: "translateX(-50%)", width: "100%",
+              position: "absolute", top: -6, left: "50%",
+              transform: "translateX(calc(-50% + 5px))", width: "100%",
               textAlign: "center", pointerEvents: "none",
             }}>Lucy Kates</h1>
             <h1 style={{
@@ -178,7 +176,7 @@ export default function V6() {
                 <div className="v6-polaroid">
                   <img src={imgLucyPhoto} alt="Lucy" style={{ height: 268 }} />
                   <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>
-                    me.
+                    Lucy in a park
                   </p>
                 </div>
               </div>
@@ -436,10 +434,15 @@ export default function V6() {
           </div>
 
           {/* Footer */}
-          <footer className="v6-footer-links" style={{ paddingTop: 56, display: "flex", gap: 20 }}>
-            <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Reach out</a>
-            <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Resume</a>
-            <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>LinkedIn</a>
+          <footer style={{ paddingTop: 56 }}>
+            <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 32, letterSpacing: "-2px", color: "#000", margin: "0 0 6px", lineHeight: "normal" }}>Reach out?</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Email</a>
+              <span style={{ fontFamily: LUCY_FONT, fontSize: 20, opacity: 0.3 }}>•</span>
+              <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>LinkedIn</a>
+              <span style={{ fontFamily: LUCY_FONT, fontSize: 20, opacity: 0.3 }}>•</span>
+              <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Resume</a>
+            </div>
           </footer>
 
         </div>

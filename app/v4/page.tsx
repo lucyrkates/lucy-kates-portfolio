@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const imgPhotoOfLucy = "https://www.figma.com/api/mcp/asset/38812c1c-69e1-471c-b46c-2874dd4a0cf4";
-const imgWave = "https://www.figma.com/api/mcp/asset/f78601c8-43c1-4593-b28b-c8ab65de1e28";
+const imgWave = "/images/wave-projects.svg";
 const imgSalesTool = "https://www.figma.com/api/mcp/asset/691de2f8-7bef-4008-befd-6512dbbdcc31";
 const imgRelationshipMap = "https://www.figma.com/api/mcp/asset/b8cabf67-f497-4bb0-8b66-992a4dfb29f6";
 const imgMicrosoftLinkedIn = "https://www.figma.com/api/mcp/asset/82be2ed0-767f-4bc6-a946-81cc78f83f3d";
@@ -10,6 +10,7 @@ const imgEnchantments = "https://www.figma.com/api/mcp/asset/d880de9e-0311-4a71-
 const imgBiking = "https://www.figma.com/api/mcp/asset/2cbdd2cf-6d2c-4b78-b7f3-b24c52a7de52";
 
 const INRIA = "var(--font-inria-sans), serif";
+const LUCY_FONT_BOLD = "'LucyFontBold', sans-serif";
 
 const CARD_TITLE: React.CSSProperties = {
   fontFamily: INRIA,
@@ -35,6 +36,7 @@ export default function V4() {
     <>
       <style>{`
         @font-face { font-family: 'Quiny'; src: url('/fonts/quiny.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'LucyFontBold'; src: url('/fonts/lucy-font-bold.otf') format('opentype'); font-display: block; }
         @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
         .v4-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: var(--font-inria-sans), serif; }
@@ -51,8 +53,9 @@ export default function V4() {
         .v4-card-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
         .v4-coming-soon { display: inline-block; font-family: var(--font-inria-sans), serif; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(0,0,0,0.45); border: 1px solid rgba(0,0,0,0.18); border-radius: 4px; padding: 2px 7px; flex-shrink: 0; }
 
-        .v4-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; }
+        .v4-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: box-shadow 0.2s ease; }
         .v4-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
+        .v4-polaroid:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.13); }
 
         .v4-link { text-decoration: none; color: inherit; opacity: 0.45; transition: opacity 0.15s; }
         .v4-link:hover { opacity: 1; }
@@ -255,7 +258,7 @@ export default function V4() {
               <div style={{ transform: "rotate(1deg)" }}>
                 <div className="v4-polaroid">
                   <img src={imgBackpacking} alt="Backpacking in Canada" />
-                  <p style={{ fontFamily: "'Caveat', cursive", fontSize: 16, color: "#000", margin: "12px 0 0", lineHeight: 1.1, letterSpacing: "-0.4px" }}>
+                  <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>
                     Backpacking in canada
                   </p>
                 </div>
@@ -263,7 +266,7 @@ export default function V4() {
               <div style={{ transform: "rotate(-1deg)" }}>
                 <div className="v4-polaroid">
                   <img src={imgEnchantments} alt="Hiking The Enchantments" />
-                  <p style={{ fontFamily: "'Caveat', cursive", fontSize: 16, color: "#000", margin: "12px 0 0", lineHeight: 1.1, letterSpacing: "-0.4px" }}>
+                  <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>
                     Hiking The Enchantments w/pals
                   </p>
                 </div>
@@ -271,7 +274,7 @@ export default function V4() {
               <div style={{ transform: "rotate(4deg)" }}>
                 <div className="v4-polaroid">
                   <img src={imgBiking} alt="Biking in my first triathlon" />
-                  <p style={{ fontFamily: "'Caveat', cursive", fontSize: 16, color: "#000", margin: "12px 0 0", lineHeight: 1.1, letterSpacing: "-0.4px" }}>
+                  <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>
                     Biking in my first triatholon
                   </p>
                 </div>
