@@ -103,13 +103,19 @@ export default function V6() {
         .v6d { animation: v6in 0.65s ease 0.36s both; }
 
         @media (max-width: 680px) {
-          .v6-main { padding: 72px 20px 40px !important; }
-          .v6-name h1 { font-size: clamp(52px, 14vw, 113px) !important; letter-spacing: -3px !important; white-space: normal !important; }
-          .v6-bio-row { flex-direction: column-reverse !important; }
-          .v6-bio-polaroid { display: flex; justify-content: center; }
+          .v6-main { padding: 72px 20px 48px !important; }
+          .v6-name h1 { font-size: clamp(52px, 15vw, 113px) !important; letter-spacing: -3px !important; white-space: normal !important; }
+          .v6-bio-row { flex-direction: column-reverse !important; align-items: center !important; }
+          .v6-bio-polaroid { width: 100%; display: flex; justify-content: center; }
           .v6-proj-row { flex-direction: column !important; }
-          .v6-polaroid-row { flex-direction: column !important; align-items: center !important; gap: 40px !important; }
+          .v6-sticker-img, .v6-sticker-img-l { overflow: hidden !important; }
+          .v6-polaroid-row { flex-direction: column !important; align-items: flex-start !important; gap: 48px !important; }
+          .v6-polaroid-row > div:nth-child(2) { align-self: flex-end; }
+          .v6-polaroid-row > div:nth-child(3) { align-self: center; }
           .v6-tape { display: none !important; }
+          .v6-footer-links { flex-direction: row !important; gap: 0 !important; }
+          .v6-footer-links a::after { content: " • "; opacity: 0.3; margin: 0 2px; }
+          .v6-footer-links a:last-child::after { content: ""; }
         }
       `}</style>
 
@@ -430,7 +436,7 @@ export default function V6() {
           </div>
 
           {/* Footer */}
-          <footer style={{ paddingTop: 56, display: "flex", gap: 20 }}>
+          <footer className="v6-footer-links" style={{ paddingTop: 56, display: "flex", gap: 20 }}>
             <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Reach out</a>
             <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Resume</a>
             <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>LinkedIn</a>

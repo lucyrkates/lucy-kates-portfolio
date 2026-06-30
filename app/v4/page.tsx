@@ -62,6 +62,14 @@ export default function V4() {
         .v4b { animation: v4in 0.65s ease 0.14s both; }
         .v4c { animation: v4in 0.65s ease 0.28s both; }
 
+        @media (max-width: 900px) {
+          .v4-hero { padding: 80px 48px 40px !important; }
+          .v4-bio-wrap { padding: 0 48px !important; }
+          .v4-projects { padding: 32px 48px 24px !important; }
+          .v4-interests-wrap { padding: 48px 48px !important; }
+          .v4-polaroids-wrap { padding: 0 48px 48px !important; }
+          .v4-footer { padding: 56px 48px !important; }
+        }
         @media (max-width: 680px) {
           .v4-hero { padding: 72px 24px 32px !important; }
           .v4-hero h1 { white-space: normal !important; }
