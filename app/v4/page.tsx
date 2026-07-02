@@ -175,18 +175,22 @@ export default function V4() {
 
             {/* Row 1 */}
             <div className="v4-card-row" style={{ display: "flex", gap: 24 }}>
-              <div className="v4-card">
-                <div className="v4-card-img">
-                  <img src="/images/aura.png" alt="Project Aura" />
+              <a href="https://news.linkedin.com/2026/visibility-builds-credibility---the-tools-you-use-every-day--now" target="_blank" rel="noopener noreferrer" className="v4-card v4-card-link">
+                <div className="v4-card-img" style={{ position: "relative", overflow: "hidden" }}>
+                  <img src="/images/ca-phone-1.png" alt="" style={{ position: "absolute", left: "15.2%", top: "2.4%", width: "31.1%", height: "auto" }} />
+                  <img src="/images/ca-phone-2.png" alt="" style={{ position: "absolute", left: "53.9%", top: "2.4%", width: "30.9%", height: "auto" }} />
+                  <img src="/images/ca-icon-github.png"   alt="" style={{ position: "absolute", left: "3.0%",  top: "7.8%",  width: "13.1%" }} />
+                  <img src="/images/ca-icon-lovable.png"  alt="" style={{ position: "absolute", left: "4.1%",  top: "39.8%", width: "14.0%" }} />
+                  <img src="/images/ca-icon-replit.png"   alt="" style={{ position: "absolute", left: "9.3%",  top: "77.5%", width: "13.9%" }} />
+                  <img src="/images/ca-icon-hubspot.png"  alt="" style={{ position: "absolute", left: "41.9%", top: "30.1%", width: "14.7%" }} />
+                  <img src="/images/ca-icon-duolingo.png" alt="" style={{ position: "absolute", left: "84.2%", top: "3.1%",  width: "13.6%" }} />
+                  <img src="/images/ca-icon-air.png"      alt="" style={{ position: "absolute", left: "83.8%", top: "75.3%", width: "14.5%" }} />
                 </div>
                 <div className="v4-card-body">
-                  <div className="v4-card-title-row">
-                    <p style={{...CARD_TITLE, margin: 0}}>Project Aura</p>
-                    <span className="v4-coming-soon">Coming soon</span>
-                  </div>
-                  <p style={CARD_DESC}>A personal AI assistant for every member of the global workforce. Rethinking how we work with AI</p>
+                  <p style={CARD_TITLE}>Connected apps</p>
+                  <p style={CARD_DESC}>Connect the apps you use every day directly to your LinkedIn profile.</p>
                 </div>
-              </div>
+              </a>
 
               <a href="https://www.linkedin.com/business/sales/blog/product-updates/powering-linkedin-with-sales-navigator-insights-and-ai-assisted-introductions" target="_blank" rel="noopener noreferrer" className="v4-card v4-card-link">
                 <div className="v4-card-img">
