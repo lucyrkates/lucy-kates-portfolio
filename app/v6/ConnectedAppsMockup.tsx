@@ -12,22 +12,24 @@ const CONTAINER_H = 340;
 
 const ICONS = [
   // Left column
-  { src: "/images/ca-icon-github.png",   left: "2%",  top: "3%",  size: "16%", rotate: -7  },
-  { src: "/images/ca-icon-lovable.png",  left: "0%",  top: "38%", size: "16%", rotate: -4  },
-  { src: "/images/ca-icon-replit.png",   left: "5%",  top: "71%", size: "16%", rotate: -6  },
+  { src: "/images/ca-icon-github.png",   left: "2%",  top: "3%",  size: "16%", rotate: -7,  hoverRotate: -11 },
+  { src: "/images/ca-icon-lovable.png",  left: "0%",  top: "38%", size: "16%", rotate: -4,  hoverRotate: -1  },
+  { src: "/images/ca-icon-replit.png",   left: "5%",  top: "71%", size: "16%", rotate: -6,  hoverRotate: -9  },
   // Right column (overlaps phone right edge)
-  { src: "/images/ca-icon-duolingo.png", left: "63%", top: "2%",  size: "16%", rotate: 10  },
-  { src: "/images/ca-icon-hubspot.png",  left: "61%", top: "33%", size: "16%", rotate: 6   },
-  { src: "/images/ca-icon-air.png",      left: "59%", top: "62%", size: "16%", rotate: 13  },
+  { src: "/images/ca-icon-duolingo.png", left: "63%", top: "2%",  size: "16%", rotate: 10,  hoverRotate: 14  },
+  { src: "/images/ca-icon-hubspot.png",  left: "61%", top: "33%", size: "16%", rotate: 6,   hoverRotate: 3   },
+  { src: "/images/ca-icon-air.png",      left: "59%", top: "62%", size: "16%", rotate: 13,  hoverRotate: 10  },
 ];
 
 // Same shadow as v6 polaroid stickers
 const SHADOW      = "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)";
-const SHADOW_LIFT = "0 6px 16px rgba(0,0,0,0.13)";
+const SHADOW_LIFT = "0 3px 8px rgba(0,0,0,0.10)";
 
 export default function ConnectedAppsMockup() {
   const [offsets, setOffsets] = useState<Offset[]>(ICONS.map(() => ({ x: 0, y: 0 })));
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [phoneHovered, setPhoneHovered] = useState(false);
   const drag = useRef<{
     idx: number; startX: number; startY: number; origX: number; origY: number;
   } | null>(null);
@@ -63,19 +65,21 @@ export default function ConnectedAppsMockup() {
 
       {/* Phone: wrapped in white sticker border matching the icon stickers */}
       <div
+        onMouseEnter={() => setPhoneHovered(true)}
+        onMouseLeave={() => setPhoneHovered(false)}
         style={{
           position: "absolute",
           height: "90%",
           left: "50%",
           top: "2%",
-          transform: "translateX(-50%)",
+          transform: `translateX(-50%) translateY(${phoneHovered ? -6 : 0}px) rotate(${phoneHovered ? -1.5 : 0}deg)`,
           background: "white",
           padding: 5,
           borderRadius: 36,
-          boxShadow: SHADOW,
+          boxShadow: phoneHovered ? SHADOW_LIFT : SHADOW,
           zIndex: 5,
-          pointerEvents: "none",
           display: "flex",
+          transition: "transform 0.2s ease, box-shadow 0.2s ease",
         }}
       >
         <img
@@ -89,10 +93,14 @@ export default function ConnectedAppsMockup() {
       {/* Draggable sticker icons */}
       {ICONS.map((icon, i) => {
         const isActive = activeIdx === i;
+        const isHovered = hoveredIdx === i && !isActive;
+        const lifted = isActive || isHovered;
         return (
           <div
             key={i}
             onMouseDown={e => startDrag(e, i)}
+            onMouseEnter={() => setHoveredIdx(i)}
+            onMouseLeave={() => setHoveredIdx(null)}
             onClick={e => e.stopPropagation()}
             style={{
               position: "absolute",
@@ -104,12 +112,12 @@ export default function ConnectedAppsMockup() {
               background: "white",
               borderRadius: 18,
               boxSizing: "border-box",
-              boxShadow: isActive ? SHADOW_LIFT : SHADOW,
+              boxShadow: lifted ? SHADOW_LIFT : SHADOW,
               cursor: isActive ? "grabbing" : "grab",
               userSelect: "none",
-              zIndex: isActive ? 20 : 10,
-              transform: `rotate(${icon.rotate}deg)`,
-              transition: isActive ? "none" : "box-shadow 0.15s ease",
+              zIndex: isActive ? 20 : isHovered ? 15 : 10,
+              transform: `rotate(${isHovered ? icon.hoverRotate : icon.rotate}deg) translateY(${isHovered ? -6 : 0}px)`,
+              transition: isActive ? "none" : "transform 0.2s ease, box-shadow 0.2s ease",
             }}
           >
             <img
