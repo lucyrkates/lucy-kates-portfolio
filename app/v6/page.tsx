@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ConnectedAppsMockup from "./ConnectedAppsMockup";
+import HoverSticker from "./HoverSticker";
 
 const imgLucyPhoto    = "https://www.figma.com/api/mcp/asset/79084d02-d640-488a-bd0a-2d4ab98fb716";
 const imgWaveProjects = "/images/wave-projects.svg";
@@ -8,7 +9,7 @@ const imgUnionBorder  = "https://www.figma.com/api/mcp/asset/5cd6e895-0496-4abe-
 const imgRelMap       = "https://www.figma.com/api/mcp/asset/65210a34-cded-4283-94c0-33ec477be7df";
 const imgSalesPhone1  = "https://www.figma.com/api/mcp/asset/6ffcc478-12fb-4fd5-b45d-d315099b2297";
 const imgSalesPhone2  = "https://www.figma.com/api/mcp/asset/e633bbda-1a33-4186-93e7-1b9cdb72773c";
-const imgOutlookMock  = "https://www.figma.com/api/mcp/asset/924eed49-d9e2-43ea-bbb1-047020180110";
+const imgOutlookMock  = "/images/ms-outlook-mock.png";
 const imgTeamsLogo    = "https://www.figma.com/api/mcp/asset/36675377-ae2c-46dd-873c-9f6f70ed3aff";
 const imgWordLogo     = "https://www.figma.com/api/mcp/asset/0fc1f34b-9128-4b96-a508-ba1249c2ba7b";
 const imgOutlookIcon  = "https://www.figma.com/api/mcp/asset/6c06568b-9dd0-43e4-9938-3444af8fd8ca";
@@ -206,14 +207,14 @@ export default function V6() {
                   target="_blank" rel="noopener noreferrer"
                   className="v6-proj-link"
                 >
-                  <div className="v6-sticker-img" style={{ height: 270, position: "relative", width: "100%" }}>
+                  <HoverSticker hoverRotate={4} height={270}>
                     <div style={{ position: "absolute", left: 4, top: 28, transform: "rotate(2.8deg)", transformOrigin: "top left" }}>
                       <img src={imgUnionBorder} alt="" style={{ width: 380, height: 225, display: "block" }} />
                     </div>
                     <div style={{ position: "absolute", left: 14, top: 39, transform: "rotate(2.8deg)", transformOrigin: "top left" }}>
                       <img src={imgRelMap} alt="Relationship map" style={{ width: 357, height: 209, objectFit: "cover", display: "block" }} />
                     </div>
-                  </div>
+                  </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                       <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: 1 }}>Relationship map</p>
@@ -223,13 +224,29 @@ export default function V6() {
                   </div>
                 </a>
 
+                {/* Connected apps */}
+                <div className="v6-sticker">
+                  <ConnectedAppsMockup />
+                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    <a href="https://news.linkedin.com/2026/visibility-builds-credibility---the-tools-you-use-every-day--now" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 4 }}>
+                      <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: 1 }}>Connected apps</p>
+                      <ExternalLinkIcon />
+                    </a>
+                    <p style={{ fontFamily: LUCY_FONT, fontSize: 16, letterSpacing: "-0.48px", margin: 0, lineHeight: "normal", color: "#000" }}>Connect the apps you use every day directly to your LinkedIn profile.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Row 2 */}
+              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
+
                 {/* Sales tool sticker — two phones */}
                 <a
                   href="https://www.linkedin.com/business/sales/blog/product-updates/powering-linkedin-with-sales-navigator-insights-and-ai-assisted-introductions"
                   target="_blank" rel="noopener noreferrer"
                   className="v6-proj-link"
                 >
-                  <div className="v6-sticker-img v6-sticker-img-l" style={{ height: 270, position: "relative", width: "100%" }}>
+                  <HoverSticker hoverRotate={-3.5} height={270}>
                     <div style={{
                       position: "absolute", left: 19.5, top: 21.39,
                       width: 116, height: 240,
@@ -259,7 +276,7 @@ export default function V6() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                       <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: 1 }}>A sales tool on LinkedIn</p>
@@ -268,37 +285,25 @@ export default function V6() {
                     <p style={{ fontFamily: LUCY_FONT, fontSize: 16, letterSpacing: "-0.48px", margin: 0, lineHeight: "normal", color: "#000" }}>Make it easier for sellers to research accounts without ever having to leave LinkedIn.</p>
                   </div>
                 </a>
-              </div>
-
-              {/* Row 2 */}
-              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
 
                 {/* Microsoft sticker */}
                 <div className="v6-sticker">
-                  <div className="v6-sticker-img" style={{ height: 270, position: "relative", width: "100%" }}>
-                    <div style={{ position: "absolute", left: 16, top: 25, transform: "rotate(-1.63deg)", transformOrigin: "top left" }}>
-                      <div style={{ border: "8px solid white", borderRadius: 6, boxShadow: "1px 1px 2px rgba(0,0,0,0.25)", overflow: "hidden", width: 355, height: 209, position: "relative" }}>
-                        <img src={imgOutlookMock} alt="Microsoft LinkedIn integration" style={{
-                          position: "absolute", height: "114.41%", left: "-9.81%", top: "-7.1%", width: "119.93%",
-                        }} />
-                      </div>
+                  <HoverSticker hoverRotate={-2.5} height={270}>
+                    <div style={{
+                      position: "absolute", left: 4, top: 20, right: 4,
+                      transform: "rotate(-1.63deg)", transformOrigin: "top center",
+                      background: "white",
+                      padding: 6,
+                      borderRadius: 20,
+                      boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
+                    }}>
+                      <img src={imgOutlookMock} alt="Microsoft LinkedIn integration"
+                        style={{ width: "100%", height: "auto", display: "block", borderRadius: 14 }} />
                     </div>
-                  </div>
+                  </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: "normal", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>Microsoft &lt;&gt; LinkedIn integration</p>
                     <p style={{ fontFamily: LUCY_FONT, fontSize: 16, letterSpacing: "-0.48px", margin: 0, lineHeight: "normal", color: "#000" }}>A collaboration between LinkedIn and Microsoft bringing LinkedIn insights into Outlook and Teams.</p>
-                  </div>
-                </div>
-
-                {/* Connected apps */}
-                <div className="v6-sticker">
-                  <ConnectedAppsMockup />
-                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                    <a href="https://news.linkedin.com/2026/visibility-builds-credibility---the-tools-you-use-every-day--now" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 4 }}>
-                      <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: 1 }}>Connected apps</p>
-                      <ExternalLinkIcon />
-                    </a>
-                    <p style={{ fontFamily: LUCY_FONT, fontSize: 16, letterSpacing: "-0.48px", margin: 0, lineHeight: "normal", color: "#000" }}>Connect the apps you use every day directly to your LinkedIn profile.</p>
                   </div>
                 </div>
 
