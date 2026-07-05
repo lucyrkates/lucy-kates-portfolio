@@ -1,12 +1,11 @@
 import Link from "next/link";
 import ConnectedAppsMockup from "./ConnectedAppsMockup";
 import HoverSticker from "./HoverSticker";
+import WaveDraw from "./WaveDraw";
 
 const imgLucyPhoto    = "https://www.figma.com/api/mcp/asset/79084d02-d640-488a-bd0a-2d4ab98fb716";
 const imgWaveProjects = "/images/wave-projects.svg";
 const imgWaveAbout    = "/images/wave-about.svg";
-const imgUnionBorder  = "https://www.figma.com/api/mcp/asset/5cd6e895-0496-4abe-aeaa-71692cf9c435";
-const imgRelMap       = "https://www.figma.com/api/mcp/asset/65210a34-cded-4283-94c0-33ec477be7df";
 const imgSalesPhone1  = "https://www.figma.com/api/mcp/asset/6ffcc478-12fb-4fd5-b45d-d315099b2297";
 const imgSalesPhone2  = "https://www.figma.com/api/mcp/asset/e633bbda-1a33-4186-93e7-1b9cdb72773c";
 const imgOutlookMock  = "/images/ms-outlook-mock.png";
@@ -47,6 +46,22 @@ const ExternalLinkIcon = () => (
   </svg>
 );
 
+function StickerWord({ word, startDelay = 0 }: { word: string; startDelay?: number }) {
+  return (
+    <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+      {word.split("").map((ch, i) => (
+        <span key={i} className="v6-letter" style={{
+          animationDelay: `${startDelay + i * 0.07}s`,
+          ["--r" as string]: `${(i % 2 === 0 ? 1 : -1) * (5 + (i % 3) * 2)}deg`,
+        }}>
+          <span className="v6-letter-back" aria-hidden="true">{ch}</span>
+          <span className="v6-letter-front">{ch}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function SectionHeading({ text, shadowColor, fontSize = 40, letterSpacing = "3.2px", shadowSize = 39, shadowSpacing = "3.12px", wave }: {
   text: string; shadowColor: string; fontSize?: number; letterSpacing?: string; shadowSize?: number; shadowSpacing?: string; wave: string;
 }) {
@@ -65,9 +80,7 @@ function SectionHeading({ text, shadowColor, fontSize = 40, letterSpacing = "3.2
           textTransform: "uppercase", margin: 0, whiteSpace: "nowrap", position: "relative",
         }}>{text}</h2>
       </div>
-      <div style={{ height: 30, flex: 1 }}>
-        <img src={wave} alt="" style={{ width: "100%", height: "100%", objectFit: "fill", display: "block" }} />
-      </div>
+      <WaveDraw src={wave} />
     </div>
   );
 }
@@ -92,9 +105,26 @@ export default function V6() {
         .v6-sticker-img:hover { transform: rotate(2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
         .v6-sticker-img-l:hover { transform: rotate(-2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
 
-        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: box-shadow 0.2s ease; }
+        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease; }
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
-        .v6-polaroid:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.13); }
+        .v6-polaroid:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.24); }
+
+        .v6-letter { position: relative; display: inline-block; }
+        .v6-letter-front { position: relative; display: inline-block; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1); }
+        .v6-letter-back { position: absolute; left: 0.05em; top: -0.05em; display: inline-block; color: #ffa617; font-family: 'LucyOutline', sans-serif; mix-blend-mode: multiply; pointer-events: none; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1); }
+        .v6-letter:hover .v6-letter-front { transform: translateY(-7px) rotate(var(--r)); }
+        .v6-letter:hover .v6-letter-back { transform: translate(0.03em, -0.03em); color: #bde160; }
+
+        @media (prefers-reduced-motion: no-preference) {
+          .v6-letter { opacity: 0; animation: v6settle 0.7s cubic-bezier(.22,1,.36,1) both; }
+          @keyframes v6settle {
+            0%   { opacity: 0; transform: translateY(-44px) rotate(var(--r)) scale(1.14); }
+            62%  { opacity: 1; transform: translateY(5px) rotate(calc(var(--r) * -0.25)) scale(0.99); }
+            100% { opacity: 1; transform: none; }
+          }
+          .v6-wave img { clip-path: inset(-15% 100% -15% 0); transition: clip-path 1.2s ease 0.1s; }
+          .v6-wave.on img { clip-path: inset(-15% -2% -15% 0); }
+        }
 
         .v6-dimlink { text-decoration: none; color: #000; opacity: 0.45; transition: opacity 0.15s; }
         .v6-dimlink:hover { opacity: 1; }
@@ -121,7 +151,7 @@ export default function V6() {
 
       <nav className="v6-nav">
         <Link href="/v6" className="active">Concept 1</Link>
-        <Link href="/v4">Concept 2</Link>
+        <Link href="/v8">Concept 3</Link>
       </nav>
 
       <main className="v6-main" style={{
@@ -135,25 +165,18 @@ export default function V6() {
       }}>
         <div style={{ maxWidth: 805, width: "100%", display: "flex", flexDirection: "column", gap: 48 }}>
 
-          {/* Name — double layer */}
-          <div className="v6a v6-name" style={{ textAlign: "center", position: "relative" }}>
-            <h1 style={{
-              fontFamily: LUCY_OUTLINE,
-              fontSize: 113, fontWeight: "normal", lineHeight: "normal",
-              letterSpacing: "-7.91px", color: "#ffa617",
-              mixBlendMode: "multiply", textTransform: "uppercase",
-              margin: 0, whiteSpace: "nowrap",
-              position: "absolute", top: -6, left: "50%",
-              transform: "translateX(calc(-50% + 5px))", width: "100%",
-              textAlign: "center", pointerEvents: "none",
-            }}>Lucy Kates</h1>
+          {/* Name — double layer, letters settle in like placed stickers */}
+          <div className="v6-name" style={{ textAlign: "center", position: "relative" }}>
             <h1 style={{
               fontFamily: LUCY_OUTLINE_BOLD,
               fontSize: 113, fontWeight: "normal", lineHeight: "normal",
               letterSpacing: "-7.91px", color: "#0b4a52",
               textTransform: "uppercase", textAlign: "center",
-              margin: 0, whiteSpace: "nowrap", position: "relative",
-            }}>Lucy Kates</h1>
+              margin: 0, whiteSpace: "nowrap",
+            }}>
+              <StickerWord word="Lucy" startDelay={0.08} />{" "}
+              <StickerWord word="Kates" startDelay={0.42} />
+            </h1>
           </div>
 
           {/* Bio row */}
@@ -208,11 +231,14 @@ export default function V6() {
                   className="v6-proj-link"
                 >
                   <HoverSticker hoverRotate={4} height={270}>
-                    <div style={{ position: "absolute", left: 4, top: 28, transform: "rotate(2.8deg)", transformOrigin: "top left" }}>
-                      <img src={imgUnionBorder} alt="" style={{ width: 380, height: 225, display: "block" }} />
-                    </div>
-                    <div style={{ position: "absolute", left: 14, top: 39, transform: "rotate(2.8deg)", transformOrigin: "top left" }}>
-                      <img src={imgRelMap} alt="Relationship map" style={{ width: 357, height: 209, objectFit: "cover", display: "block" }} />
+                    <div style={{
+                      position: "absolute", left: 6, top: 22, right: 22,
+                      transform: "rotate(2.4deg)", transformOrigin: "top left",
+                      background: "white", padding: 6, borderRadius: 14,
+                      boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
+                    }}>
+                      <img src="/carousel/relationship-map.png" alt="Relationship map"
+                        style={{ width: "100%", height: "auto", display: "block", borderRadius: 9 }} />
                     </div>
                   </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
