@@ -12,13 +12,13 @@ const CONTAINER_H = 340;
 
 const ICONS = [
   // Left column
-  { src: "/images/ca-icon-github.png",   left: "2%",  top: "3%",  size: "16%", rotate: -7,  hoverRotate: -11 },
-  { src: "/images/ca-icon-lovable.png",  left: "0%",  top: "38%", size: "16%", rotate: -4,  hoverRotate: -1  },
-  { src: "/images/ca-icon-replit.png",   left: "5%",  top: "71%", size: "16%", rotate: -6,  hoverRotate: -9  },
-  // Right column (overlaps phone right edge)
-  { src: "/images/ca-icon-duolingo.png", left: "63%", top: "2%",  size: "16%", rotate: 10,  hoverRotate: 14  },
-  { src: "/images/ca-icon-hubspot.png",  left: "61%", top: "33%", size: "16%", rotate: 6,   hoverRotate: 3   },
-  { src: "/images/ca-icon-air.png",      left: "59%", top: "62%", size: "16%", rotate: 13,  hoverRotate: 10  },
+  { src: "/images/ca-icon-github.png",   left: "1%",  top: "4%",  size: "16%", rotate: -7,  hoverRotate: -11 },
+  { src: "/images/ca-icon-lovable.png",  left: "-1%", top: "32%", size: "16%", rotate: -4,  hoverRotate: -1  },
+  { src: "/images/ca-icon-replit.png",   left: "1%",  top: "63%", size: "16%", rotate: -6,  hoverRotate: -9  },
+  // Right column — sticking out past the phone's right edge
+  { src: "/images/ca-icon-duolingo.png", left: "69%", top: "8%",  size: "16%", rotate: 10,  hoverRotate: 14  },
+  { src: "/images/ca-icon-hubspot.png",  left: "68%", top: "30%", size: "16%", rotate: 6,   hoverRotate: 3   },
+  { src: "/images/ca-icon-air.png",      left: "67%", top: "54%", size: "16%", rotate: 13,  hoverRotate: 10  },
 ];
 
 // Same shadow as v6 polaroid stickers

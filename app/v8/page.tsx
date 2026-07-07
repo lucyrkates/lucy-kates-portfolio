@@ -10,12 +10,12 @@ import { useEffect, useRef, useState } from "react";
    grain, drifting topographic contours, ink stamps, and orchestrated motion.
 --------------------------------------------------------------------------- */
 
-const imgSalesPhone1 = "https://www.figma.com/api/mcp/asset/6ffcc478-12fb-4fd5-b45d-d315099b2297";
-const imgSalesPhone2 = "https://www.figma.com/api/mcp/asset/e633bbda-1a33-4186-93e7-1b9cdb72773c";
-const imgRelMap      = "https://www.figma.com/api/mcp/asset/65210a34-cded-4283-94c0-33ec477be7df";
-const imgBackpacking = "https://www.figma.com/api/mcp/asset/81fb59e1-5bb1-40cf-b901-f3adad4ca4c1";
-const imgEnchantments = "https://www.figma.com/api/mcp/asset/1c284681-4840-4aa0-a222-21b780e03d8c";
-const imgBiking      = "https://www.figma.com/api/mcp/asset/9a3cc01a-771c-4056-b6bb-2e43610ffe59";
+const imgSalesPhone1  = "/images/sales-phone-1.png";
+const imgSalesPhone2  = "/images/sales-phone-2.png";
+const imgRelMap       = "/carousel/relationship-map.png";
+const imgBackpacking  = "/images/photo-backpacking.png";
+const imgEnchantments = "/images/photo-enchantments.png";
+const imgBiking       = "/images/photo-biking.png";
 
 // Project images as die-cut journal stickers (Concept-1 style): a white
 // outline hugging each silhouette, pasted straight onto the page. Set to
@@ -362,7 +362,6 @@ const ENTRIES = [
   },
 ];
 
-const MARQUEE = "DESIGNER ✦ EQUITY CHAMPION ✦ HIKER ✦ CEREAL-LOVER ✦ RUNNER ✦ BERKELEY, CA ✦ ";
 
 export default function V8() {
   useEffect(() => {
@@ -447,22 +446,9 @@ export default function V8() {
           .c3-stamp-spin { animation: c3-spin 26s linear infinite; }
           @keyframes c3-spin { to { transform: rotate(360deg); } }
 
-          .c3-marquee-track { animation: c3-scroll 30s linear infinite; }
-          .c3-marquee:hover .c3-marquee-track { animation-play-state: paused; }
-          @keyframes c3-scroll { to { transform: translateX(-50%); } }
-
           .c3-star { animation: c3-twinkle 3.4s ease-in-out infinite; }
           @keyframes c3-twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.75; } }
         }
-        @media (prefers-reduced-motion: reduce) {
-          .c3-marquee-track { transform: none; }
-        }
-
-        /* ------- marquee ------- */
-        .c3-marquee { background: var(--marigold); transform: rotate(-1.1deg); width: 104vw; margin-left: -2vw; overflow: hidden; box-shadow: 0 3px 14px rgba(11,74,82,0.14); }
-        .c3-marquee-track { display: flex; width: max-content; padding: 12px 0; }
-        .c3-marquee-track span { font-family: 'LucyOutlineBold', sans-serif; font-size: 26px; letter-spacing: 0.12em; color: var(--ink); white-space: pre; text-transform: uppercase; }
-
         /* ------- plates ------- */
         .c3-plate { position: relative; background: #fff; padding: 14px; border-radius: 6px; box-shadow: -3px -3px 8px -6px rgba(0,0,0,0.25), 6px 8px 22px -6px rgba(11,74,82,0.28); transform-style: preserve-3d; }
         .c3-plate-bare { position: relative; transform-style: preserve-3d; }
@@ -576,14 +562,6 @@ export default function V8() {
           </div>
         </header>
 
-        {/* ============================ MARQUEE ============================ */}
-        <div className="c3-marquee" aria-hidden="true">
-          <div className="c3-marquee-track">
-            <span>{MARQUEE.repeat(3)}</span>
-            <span>{MARQUEE.repeat(3)}</span>
-          </div>
-        </div>
-
         {/* ============================ TRAIL LOG =========================== */}
         <section className="c3-section" style={{ paddingTop: 90, gap: 64 }}>
           <JournalHeading text="The trail log" back="#FFA617" front="#0B4A52" waveColor="#FFA617" />
@@ -591,10 +569,9 @@ export default function V8() {
           {ENTRIES.map((entry, idx) => (
             <article key={entry.n} className={`c3-entry c3-reveal ${idx % 2 === 1 ? "flip" : ""}`}>
               <div className="c3-entry-copy">
-                <SketchBox>Entry {entry.n}</SketchBox>
                 <h3 style={{
                   fontFamily: HAND_BOLD, fontSize: "clamp(30px, 4vw, 38px)", fontWeight: "normal",
-                  letterSpacing: "-0.06em", color: "var(--ink)", margin: "16px 0 10px", lineHeight: 1.05,
+                  letterSpacing: "-0.06em", color: "var(--ink)", margin: "0 0 10px", lineHeight: 1.05,
                 }}>
                   {entry.title}
                 </h3>

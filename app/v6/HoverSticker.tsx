@@ -5,16 +5,19 @@ export default function HoverSticker({
   hoverRotate,
   height,
   children,
+  className = "",
 }: {
   hoverRotate: number;
   height: number;
   children: React.ReactNode;
+  className?: string;
 }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className={className}
       style={{
         height,
         position: "relative",

@@ -3,21 +3,15 @@ import ConnectedAppsMockup from "./ConnectedAppsMockup";
 import HoverSticker from "./HoverSticker";
 import WaveDraw from "./WaveDraw";
 
-const imgLucyPhoto    = "https://www.figma.com/api/mcp/asset/79084d02-d640-488a-bd0a-2d4ab98fb716";
+const imgLucyPhoto    = "/images/lucy-portrait.png";
 const imgWaveProjects = "/images/wave-projects.svg";
 const imgWaveAbout    = "/images/wave-about.svg";
-const imgSalesPhone1  = "https://www.figma.com/api/mcp/asset/6ffcc478-12fb-4fd5-b45d-d315099b2297";
-const imgSalesPhone2  = "https://www.figma.com/api/mcp/asset/e633bbda-1a33-4186-93e7-1b9cdb72773c";
+const imgSalesPhone1  = "/images/sales-phone-1.png";
+const imgSalesPhone2  = "/images/sales-phone-2.png";
 const imgOutlookMock  = "/images/ms-outlook-mock.png";
-const imgTeamsLogo    = "https://www.figma.com/api/mcp/asset/36675377-ae2c-46dd-873c-9f6f70ed3aff";
-const imgWordLogo     = "https://www.figma.com/api/mcp/asset/0fc1f34b-9128-4b96-a508-ba1249c2ba7b";
-const imgOutlookIcon  = "https://www.figma.com/api/mcp/asset/6c06568b-9dd0-43e4-9938-3444af8fd8ca";
-const imgBackpacking  = "https://www.figma.com/api/mcp/asset/81fb59e1-5bb1-40cf-b901-f3adad4ca4c1";
-const imgEnchantments = "https://www.figma.com/api/mcp/asset/1c284681-4840-4aa0-a222-21b780e03d8c";
-const imgBiking       = "https://www.figma.com/api/mcp/asset/9a3cc01a-771c-4056-b6bb-2e43610ffe59";
-const imgBetaEntity   = "https://www.figma.com/api/mcp/asset/b846a55f-3958-410d-b443-b4f739b3d473";
-const imgVector2      = "https://www.figma.com/api/mcp/asset/25c7090e-2b9b-4257-b118-3348a3ec2000";
-const imgVector3      = "https://www.figma.com/api/mcp/asset/0d0ef811-e51b-428c-868d-a8b99cadda2e";
+const imgBackpacking  = "/images/photo-backpacking.png";
+const imgEnchantments = "/images/photo-enchantments.png";
+const imgBiking       = "/images/photo-biking.png";
 
 const LUCY_OUTLINE_BOLD = "'LucyOutlineBold', sans-serif";
 const LUCY_FONT_BOLD    = "'LucyFontBold', sans-serif";
@@ -135,17 +129,35 @@ export default function V6() {
         .v6c { animation: v6in 0.65s ease 0.24s both; }
         .v6d { animation: v6in 0.65s ease 0.36s both; }
 
+        /* --- 860px: project rows go single-column before they get cramped --- */
+        @media (max-width: 860px) {
+          .v6-main { padding: 80px 28px 56px !important; }
+          .v6-name h1 { font-size: clamp(64px, 13.5vw, 113px) !important; letter-spacing: clamp(-7.91px, -0.92vw, -4px) !important; }
+          .v6-proj-row { flex-direction: column !important; align-items: stretch !important; gap: 32px !important; }
+          /* Relationship map: image is 1.66:1; account for left:6 + right:22 inset and rotate */
+          .v6-hs-relmap { height: auto !important; aspect-ratio: 3 / 2; }
+          /* Two portrait phones: container needs enough height for 88% phone */
+          .v6-hs-phones { height: auto !important; aspect-ratio: 4 / 3; }
+          /* Outlook mock: image is 1.70:1 */
+          .v6-hs-ms { height: auto !important; aspect-ratio: 16 / 10; }
+        }
+
+        /* --- 680px: bio and about stack; name wraps --- */
         @media (max-width: 680px) {
           .v6-main { padding: 72px 20px 48px !important; }
-          .v6-name h1 { font-size: clamp(52px, 15vw, 113px) !important; letter-spacing: -3px !important; white-space: normal !important; }
+          .v6-name h1 { white-space: normal !important; text-align: center !important; }
           .v6-bio-row { flex-direction: column-reverse !important; align-items: center !important; }
           .v6-bio-polaroid { width: 100%; display: flex; justify-content: center; }
-          .v6-proj-row { flex-direction: column !important; }
-          .v6-sticker-img, .v6-sticker-img-l { overflow: hidden !important; }
           .v6-polaroid-row { flex-direction: column !important; align-items: flex-start !important; gap: 48px !important; }
           .v6-polaroid-row > div:nth-child(2) { align-self: flex-end; }
           .v6-polaroid-row > div:nth-child(3) { align-self: center; }
           .v6-tape { display: none !important; }
+        }
+
+        /* --- 420px: tighten polaroids on very small screens --- */
+        @media (max-width: 420px) {
+          .v6-polaroid { width: 200px !important; }
+          .v6-polaroid img { height: 200px !important; }
         }
       `}</style>
 
@@ -230,15 +242,15 @@ export default function V6() {
                   target="_blank" rel="noopener noreferrer"
                   className="v6-proj-link"
                 >
-                  <HoverSticker hoverRotate={4} height={270}>
+                  <HoverSticker hoverRotate={4} height={270} className="v6-hs-relmap">
                     <div style={{
                       position: "absolute", left: 6, top: 22, right: 22,
                       transform: "rotate(2.4deg)", transformOrigin: "top left",
-                      background: "white", padding: 6, borderRadius: 14,
-                      boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
                     }}>
                       <img src="/carousel/relationship-map.png" alt="Relationship map"
-                        style={{ width: "100%", height: "auto", display: "block", borderRadius: 9 }} />
+                        style={{ width: "100%", height: "auto", display: "block",
+                          filter: "drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 6px 14px rgba(0,0,0,0.15))",
+                        }} />
                     </div>
                   </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -272,7 +284,7 @@ export default function V6() {
                   target="_blank" rel="noopener noreferrer"
                   className="v6-proj-link"
                 >
-                  <HoverSticker hoverRotate={-3.5} height={270}>
+                  <HoverSticker hoverRotate={-3.5} height={270} className="v6-hs-phones">
                     <div style={{
                       position: "absolute", left: 19.5, top: 21.39,
                       width: 116, height: 240,
@@ -314,7 +326,7 @@ export default function V6() {
 
                 {/* Microsoft sticker */}
                 <div className="v6-sticker">
-                  <HoverSticker hoverRotate={-2.5} height={270}>
+                  <HoverSticker hoverRotate={-2.5} height={270} className="v6-hs-ms">
                     <div style={{
                       position: "absolute", left: 4, top: 20, right: 4,
                       transform: "rotate(-1.63deg)", transformOrigin: "top center",
