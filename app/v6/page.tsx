@@ -82,6 +82,12 @@ function SectionHeading({ text, shadowColor, fontSize = 40, letterSpacing = "3.2
 export default function V6() {
   return (
     <>
+      <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true">
+        <filter id="v6-rough">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="1" seed="4" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.1" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
       <style>{`
         @font-face { font-family: 'LucyOutlineBold'; src: url('/fonts/lucy-outline-bold.otf') format('opentype'); font-display: block; }
         @font-face { font-family: 'LucyFontBold';    src: url('/fonts/lucy-font-bold.otf')    format('opentype'); font-display: block; }
@@ -122,6 +128,12 @@ export default function V6() {
 
         .v6-dimlink { text-decoration: none; color: #000; opacity: 0.45; transition: opacity 0.15s; }
         .v6-dimlink:hover { opacity: 1; }
+
+        .v6-pill { position: relative; font-family: 'LucyFontBold', sans-serif; font-size: 18px; color: #000; text-decoration: none; padding: 10px 24px 6px; border-radius: 100px; border: none; transition: background 0.2s, color 0.2s, transform 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+        .v6-pill::before { content: ""; position: absolute; inset: 0; border: 2px solid #000; border-radius: 100px; filter: url(#v6-rough); pointer-events: none; transition: opacity 0.2s; }
+        .v6-pill:hover { background: #faa316; color: #000; transform: translateY(-3px) rotate(-1.5deg); }
+        .v6-pill:hover::before { opacity: 0; }
+        .v6-pill:focus-visible { outline: 2px solid #0b4a52; outline-offset: 3px; }
 
         @keyframes v6in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
         .v6a { animation: v6in 0.65s ease both; }
@@ -395,13 +407,16 @@ export default function V6() {
 
           {/* Footer */}
           <footer style={{ paddingTop: 56 }}>
-            <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 32, letterSpacing: "-2px", color: "#000", margin: "0 0 6px", lineHeight: "normal" }}>Reach out?</p>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <a href="mailto:lucyrkates@gmail.com" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Email</a>
-              <span style={{ fontFamily: LUCY_FONT, fontSize: 20, opacity: 0.3 }}>•</span>
-              <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>LinkedIn</a>
-              <span style={{ fontFamily: LUCY_FONT, fontSize: 20, opacity: 0.3 }}>•</span>
-              <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-dimlink" style={{ fontFamily: LUCY_FONT, fontSize: 20, letterSpacing: "0.04em" }}>Resume</a>
+            <div style={{ position: "relative", display: "inline-block", marginBottom: 22 }}>
+              <p style={{
+                fontFamily: LUCY_OUTLINE, fontSize: "clamp(44px, 7vw, 72px)", letterSpacing: "0.02em",
+                color: "#000", textTransform: "uppercase", margin: 0, whiteSpace: "nowrap",
+              }}>Say hello</p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <a href="mailto:lucyrkates@gmail.com" className="v6-pill">Email</a>
+              <a href="https://www.linkedin.com/in/lucyrkates/" className="v6-pill" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://lucyrkates.github.io/lucy-resume/" className="v6-pill" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
           </footer>
 
