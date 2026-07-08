@@ -372,7 +372,7 @@ export default function V6() {
                 wave={imgWaveAbout}
               />
               <p style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
-                I have been a product designer for 5 years. I care about how design can have positive impact in the world. I have both enterprise and consumer experience at companies like Uber and LinkedIn.
+                I live in Berkeley California and am originally from Philadelphia I have been a product designer for 5 years. I care about how design can have positive impact in the world. I have both enterprise and consumer experience at companies like Uber and LinkedIn.
               </p>
               <p style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
                 Outside of work, I love to be outside! Whether it is hiking, running, biking, or going for a walk, I love being in nature.
