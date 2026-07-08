@@ -249,7 +249,7 @@ export default function V6() {
                     }}>
                       <img src="/carousel/relationship-map.png" alt="Relationship map"
                         style={{ width: "100%", height: "auto", display: "block",
-                          filter: "drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 6px 14px rgba(0,0,0,0.15))",
+                          filter: "drop-shadow(-1px -1px 1px rgba(0,0,0,0.08)) drop-shadow(2px 2px 1.5px rgba(0,0,0,0.08))",
                         }} />
                     </div>
                   </HoverSticker>
@@ -288,8 +288,8 @@ export default function V6() {
                     <div style={{
                       position: "absolute", left: 19.5, top: 21.39,
                       width: 116, height: 240,
-                      borderRadius: 18, border: "8px solid white",
-                      boxShadow: "1px 1px 2px rgba(0,0,0,0.25)",
+                      borderRadius: 18, border: "6px solid white",
+                      boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
                       overflow: "hidden",
                     }}>
                       <img src={imgSalesPhone1} alt="" style={{
@@ -302,8 +302,8 @@ export default function V6() {
                       <div style={{ transform: "rotate(3.31deg)" }}>
                         <div style={{
                           width: 117.2, height: 240.3, position: "relative",
-                          borderRadius: 17, border: "8px solid white",
-                          boxShadow: "-1px 1px 2px rgba(0,0,0,0.25)",
+                          borderRadius: 18, border: "6px solid white",
+                          boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
                           overflow: "hidden",
                         }}>
                           <img src={imgSalesPhone2} alt="" style={{
@@ -332,11 +332,11 @@ export default function V6() {
                       transform: "rotate(-1.63deg)", transformOrigin: "top center",
                       background: "white",
                       padding: 6,
-                      borderRadius: 20,
+                      borderRadius: 18,
                       boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
                     }}>
                       <img src={imgOutlookMock} alt="Microsoft LinkedIn integration"
-                        style={{ width: "100%", height: "auto", display: "block", borderRadius: 14 }} />
+                        style={{ width: "100%", height: "auto", display: "block", borderRadius: 12 }} />
                     </div>
                   </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>

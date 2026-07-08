@@ -3,22 +3,23 @@ import { useState, useRef, useEffect } from "react";
 
 type Offset = { x: number; y: number };
 
-// Container: 340px tall, 100% wide.
-// Phone (389×783, ratio 2.014:1): constrained by height (90% = 306px) → width ~152px regardless of card width.
+// Container: 270px tall, 100% wide — matches other project card HoverSticker heights.
+// Phone (389×783, ratio 0.497:1): constrained by height (90% = 243px) → width ~121px.
 // Icon positions: left/top as % of container dimensions, size as % of container width.
+// At typical 450px card width: phone spans ~37–63%. Left icon right edges land at ~28%, right icon left edges at ~71% → ~9% gap each side.
 // Sticker padding: fixed px (NOT %) so it doesn't scale with parent.
 
-const CONTAINER_H = 340;
+const CONTAINER_H = 270;
 
 const ICONS = [
   // Left column
-  { src: "/images/ca-icon-github.png",   left: "1%",  top: "4%",  size: "16%", rotate: -7,  hoverRotate: -11 },
-  { src: "/images/ca-icon-lovable.png",  left: "-1%", top: "32%", size: "16%", rotate: -4,  hoverRotate: -1  },
-  { src: "/images/ca-icon-replit.png",   left: "1%",  top: "63%", size: "16%", rotate: -6,  hoverRotate: -9  },
-  // Right column — sticking out past the phone's right edge
-  { src: "/images/ca-icon-duolingo.png", left: "69%", top: "8%",  size: "16%", rotate: 10,  hoverRotate: 14  },
-  { src: "/images/ca-icon-hubspot.png",  left: "68%", top: "30%", size: "16%", rotate: 6,   hoverRotate: 3   },
-  { src: "/images/ca-icon-air.png",      left: "67%", top: "54%", size: "16%", rotate: 13,  hoverRotate: 10  },
+  { src: "/images/ca-icon-github.png",   left: "12%", top: "4%",  size: "16%", rotate: -7,  hoverRotate: -11 },
+  { src: "/images/ca-icon-lovable.png",  left: "8%",  top: "33%", size: "16%", rotate: -4,  hoverRotate: -1  },
+  { src: "/images/ca-icon-replit.png",   left: "11%", top: "63%", size: "16%", rotate: -6,  hoverRotate: -9  },
+  // Right column
+  { src: "/images/ca-icon-duolingo.png", left: "71%", top: "6%",  size: "16%", rotate: 10,  hoverRotate: 14  },
+  { src: "/images/ca-icon-hubspot.png",  left: "72%", top: "30%", size: "16%", rotate: 6,   hoverRotate: 3   },
+  { src: "/images/ca-icon-air.png",      left: "70%", top: "57%", size: "16%", rotate: 13,  hoverRotate: 10  },
 ];
 
 // Same shadow as v6 polaroid stickers
@@ -74,7 +75,7 @@ export default function ConnectedAppsMockup() {
           top: "2%",
           transform: `translateX(-50%) translateY(${phoneHovered ? -6 : 0}px) rotate(${phoneHovered ? -1.5 : 0}deg)`,
           background: "white",
-          padding: 5,
+          padding: 6,
           borderRadius: 36,
           boxShadow: phoneHovered ? SHADOW_LIFT : SHADOW,
           zIndex: 5,
@@ -108,7 +109,7 @@ export default function ConnectedAppsMockup() {
               top: `calc(${icon.top} + ${offsets[i].y}px)`,
               width: icon.size,
               // Fixed pixel padding — NOT percentage (% padding uses parent width, not self width)
-              padding: 2,
+              padding: 5,
               background: "white",
               borderRadius: 18,
               boxSizing: "border-box",
