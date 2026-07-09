@@ -61,7 +61,7 @@ function SectionHeading({ text, shadowColor, fontSize = 40, letterSpacing = "3.2
 }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12, width: "100%" }}>
-      <div style={{ position: "relative", flexShrink: 0 }}>
+      <div className="v6-sec-head" style={{ position: "relative", flexShrink: 0 }}>
         <h2 style={{
           fontFamily: LUCY_OUTLINE_BOLD, fontSize: shadowSize, fontWeight: "normal",
           lineHeight: "normal", letterSpacing: shadowSpacing, color: shadowColor,
@@ -99,6 +99,7 @@ export default function V6() {
         .v6-nav a:hover { opacity: 0.75; }
         .v6-nav a.active { background: #0b4a52; color: #fff; border-color: transparent; opacity: 1; }
 
+        .v6-proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; align-items: end; }
         .v6-proj-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 16px; flex: 1; min-width: 0; }
         .v6-sticker { flex: 1; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
         .v6-sticker-img, .v6-sticker-img-l { transition: transform 0.2s ease, filter 0.2s ease; }
@@ -146,25 +147,32 @@ export default function V6() {
         .v6c { animation: v6in 0.65s ease 0.24s both; }
         .v6d { animation: v6in 0.65s ease 0.36s both; }
 
-        /* --- 860px: project rows go single-column before they get cramped --- */
+        /* --- 860px: projects go single-column (Figma mobile order: relmap, connected, MS, phones) --- */
         @media (max-width: 860px) {
           .v6-main { padding: 80px 28px 56px !important; }
           .v6-name h1 { font-size: clamp(64px, 13.5vw, 113px) !important; letter-spacing: clamp(-7.91px, -0.92vw, -4px) !important; }
-          .v6-proj-row { flex-direction: column !important; align-items: stretch !important; gap: 32px !important; }
+          .v6-proj-grid { grid-template-columns: 1fr; gap: 40px; }
+          .v6-pi-ms { order: 3; }
+          .v6-pi-phones { order: 4; }
           /* Relationship map: image is 1.66:1; account for left:6 + right:22 inset and rotate */
           .v6-hs-relmap { height: auto !important; aspect-ratio: 3 / 2; }
-          /* Two portrait phones: container needs enough height for 88% phone */
-          .v6-hs-phones { height: auto !important; aspect-ratio: 4 / 3; }
+          /* Two portrait phones: fixed-size pair, centered (Figma keeps them ~300px wide) */
+          .v6-phones-inner { margin-inline: auto; }
           /* Outlook mock: image is 1.70:1 */
           .v6-hs-ms { height: auto !important; aspect-ratio: 16 / 10; }
         }
 
-        /* --- 680px: bio and about stack; name wraps --- */
+        /* --- 680px: bio and about stack; name wraps; Figma mobile type scale --- */
         @media (max-width: 680px) {
           .v6-main { padding: 72px 20px 48px !important; }
           .v6-name h1 { white-space: normal !important; text-align: center !important; }
           .v6-bio-row { flex-direction: column-reverse !important; align-items: center !important; }
           .v6-bio-polaroid { width: 100%; display: flex; justify-content: center; }
+          .v6-tagline { font-size: 30px !important; letter-spacing: -3px !important; }
+          .v6-bio-row > div:first-of-type > p { font-size: 20px !important; letter-spacing: -1.6px !important; }
+          .v6-sec-head h2 { font-size: 30px !important; letter-spacing: 0.08em !important; }
+          .v6-sec-head h2:first-of-type { font-size: 29.5px !important; }
+          .v6-about-copy { font-size: 20px !important; letter-spacing: -1.6px !important; }
           .v6-polaroid-row { flex-direction: column !important; align-items: flex-start !important; gap: 48px !important; }
           .v6-polaroid-row > div:nth-child(2) { align-self: flex-end; }
           .v6-polaroid-row > div:nth-child(3) { align-self: center; }
@@ -222,10 +230,7 @@ export default function V6() {
               wave={imgWaveProjects}
             />
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-
-              {/* Row 1 */}
-              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
+            <div className="v6-proj-grid">
 
                 {/* Relationship map sticker */}
                 <a
@@ -264,18 +269,15 @@ export default function V6() {
                     <p style={{ fontFamily: LUCY_FONT, fontSize: 16, letterSpacing: "-0.48px", margin: 0, lineHeight: "normal", color: "#000" }}>Connect the apps you use every day directly to your LinkedIn profile.</p>
                   </div>
                 </div>
-              </div>
-
-              {/* Row 2 */}
-              <div className="v6-proj-row" style={{ display: "flex", gap: 16, alignItems: "flex-end" }}>
 
                 {/* Sales tool sticker — two phones */}
                 <a
                   href="https://www.linkedin.com/business/sales/blog/product-updates/powering-linkedin-with-sales-navigator-insights-and-ai-assisted-introductions"
                   target="_blank" rel="noopener noreferrer"
-                  className="v6-proj-link"
+                  className="v6-proj-link v6-pi-phones"
                 >
                   <HoverSticker hoverRotate={-3.5} height={270} className="v6-hs-phones">
+                    <div className="v6-phones-inner" style={{ position: "relative", width: 300, maxWidth: "100%", height: "100%" }}>
                     <div style={{
                       position: "absolute", left: 19.5, top: 21.39,
                       width: 116, height: 240,
@@ -305,6 +307,7 @@ export default function V6() {
                         </div>
                       </div>
                     </div>
+                    </div>
                   </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
@@ -316,7 +319,7 @@ export default function V6() {
                 </a>
 
                 {/* Microsoft sticker */}
-                <div className="v6-sticker">
+                <div className="v6-sticker v6-pi-ms">
                   <HoverSticker hoverRotate={-2.5} height={270} className="v6-hs-ms">
                     <div style={{
                       position: "absolute", left: 4, top: 20, right: 4,
@@ -336,7 +339,6 @@ export default function V6() {
                   </div>
                 </div>
 
-              </div>
             </div>
           </div>
 
@@ -350,10 +352,10 @@ export default function V6() {
                 shadowSize={35} shadowSpacing="2.8px"
                 wave={imgWaveAbout}
               />
-              <p style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
+              <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
                 I live in Berkeley, California and am originally from Philadelphia (🦅 Go Birds!). I originally went to design school because I believed design was the perfect combination of creative and technical thinking. Over the past 10 years, my thinking has evolved and I now am motivated by how design can have a positive impact in the world.
               </p>
-              <p style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
+              <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
                 Outside of work, I love to be outside! Whether it is hiking, running, biking, or going for a walk, I love being in nature. I have also recently started sewing! Be sure to ask my about my recent projects..!
               </p>
             </div>

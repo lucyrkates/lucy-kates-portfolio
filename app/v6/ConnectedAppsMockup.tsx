@@ -62,7 +62,7 @@ export default function ConnectedAppsMockup() {
   }
 
   return (
-    <div style={{ position: "relative", width: "100%", height: CONTAINER_H, overflow: "visible" }}>
+    <div style={{ position: "relative", width: "100%", maxWidth: 430, margin: "0 auto", height: CONTAINER_H, overflow: "visible" }}>
 
       {/* Phone: wrapped in white sticker border matching the icon stickers */}
       <div
