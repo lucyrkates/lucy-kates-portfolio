@@ -234,7 +234,7 @@ export default function V6() {
 
                 {/* Relationship map sticker */}
                 <a
-                  href="https://www.linkedin.com/business/sales/blog/product-updates/powering-linkedin-with-sales-navigator-insights-and-ai-assisted-introductions"
+                  href="https://www.linkedin.com/business/sales/blog/product-updates/relationship-map-sales-navigator-what-it-is-and-how-to-use-it"
                   target="_blank" rel="noopener noreferrer"
                   className="v6-proj-link"
                 >
