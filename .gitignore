@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code local config
+.claude/
+
+# loose working images (not referenced by the site)
+/Mocks.png
+/image 119.png
+/image 120.png
