@@ -2,8 +2,8 @@ import Link from "next/link";
 import ConnectedAppsMockup from "./ConnectedAppsMockup";
 import HoverSticker from "./HoverSticker";
 import WaveDraw from "./WaveDraw";
+import BioRow from "./BioRow";
 
-const imgLucyPhoto    = "/images/lucy-portrait.png";
 const imgWaveProjects = "/images/wave-projects.svg";
 const imgWaveAbout    = "/images/wave-about.svg";
 const imgSalesPhone1  = "/images/sales-phone-1.png";
@@ -109,6 +109,11 @@ export default function V6() {
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
         .v6-polaroid:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.24); }
 
+        .v6-tagline { color: #000; }
+        .v6-hov { position: relative; display: inline-block; cursor: default; }
+        .v6-hov::before { content: ""; position: absolute; left: -0.08em; right: -0.12em; top: 32%; bottom: 8%; background: #faa316; opacity: 0.45; border-radius: 0.3em 0.5em 0.4em 0.35em; transform: scaleX(0) rotate(-1deg); transform-origin: left center; transition: transform 0.28s cubic-bezier(.22,1,.36,1); z-index: -1; pointer-events: none; }
+        .v6-hov:hover::before { transform: scaleX(1) rotate(-1deg); }
+
         .v6-letter { position: relative; display: inline-block; }
         .v6-letter-front { position: relative; display: inline-block; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1); }
         .v6-letter-back { position: absolute; left: 0.05em; top: -0.05em; display: inline-block; color: #ffa617; font-family: 'LucyOutline', sans-serif; mix-blend-mode: multiply; pointer-events: none; transition: transform 0.25s cubic-bezier(.34,1.56,.64,1); }
@@ -203,34 +208,8 @@ export default function V6() {
             </h1>
           </div>
 
-          {/* Bio row */}
-          <div className="v6b v6-bio-row" style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
-            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12 }}>
-              <h2 style={{
-                fontFamily: LUCY_FONT_BOLD, fontSize: 40, fontWeight: "normal",
-                lineHeight: "normal", letterSpacing: "-4px", color: "#000", margin: 0,
-              }}>
-                Designer, equity champion, hiker, cereal-lover, runner.
-              </h2>
-              <p style={{
-                fontFamily: LUCY_FONT, fontSize: 26, lineHeight: "normal",
-                letterSpacing: "-2.08px", color: "#000", margin: 0,
-              }}>
-                6+ years across enterprise and consumer platforms. Currently leading design for credibility features on the LinkedIn profile, with past experience in enterprise SaaS and AI products. Brings systems thinking to ambiguous problems and cares deeply about equitable, human-centered design.
-              </p>
-            </div>
-            {/* Polaroid photo */}
-            <div className="v6-bio-polaroid" style={{ flexShrink: 0 }}>
-              <div style={{ transform: "rotate(4deg)" }}>
-                <div className="v6-polaroid">
-                  <img src={imgLucyPhoto} alt="Lucy" style={{ height: 268 }} />
-                  <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal" }}>
-                    Lucy in a park
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Bio row — tagline hovers shuffle the polaroid pile */}
+          <BioRow />
 
           {/* Projects */}
           <div className="v6c" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
