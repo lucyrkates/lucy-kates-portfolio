@@ -6,11 +6,11 @@ const LUCY_FONT = "'LucyFont', sans-serif";
 
 type PhotoKey = "default" | "equity" | "hike" | "run" | "cereal";
 
-const PHOTOS: { key: PhotoKey; src: string; cap: string; fan: { r: number; x: number; y: number } }[] = [
+const PHOTOS: { key: PhotoKey; src: string; cap: string; capSize?: number; fan: { r: number; x: number; y: number } }[] = [
   { key: "cereal",  src: "/images/profile/cereal.jpg",  cap: "cereal in the woods",        fan: { r: -9, x: -20, y: 2 } },
   { key: "run",     src: "/images/profile/run.jpg",     cap: "(post) run",                 fan: { r: 8,  x: 18,  y: 8 } },
   { key: "hike",    src: "/images/profile/hike.jpg",    cap: "On a hike",                  fan: { r: -4, x: -6,  y: -8 } },
-  { key: "equity",  src: "/images/profile/equity.jpg",  cap: "Leading an equity workshop", fan: { r: 6,  x: 12,  y: -2 } },
+  { key: "equity",  src: "/images/profile/equity.jpg",  cap: "Leading an equity workshop", capSize: 18, fan: { r: 6,  x: 12,  y: -2 } },
   { key: "default", src: "/images/profile/default.jpg", cap: "Lucy in a park",             fan: { r: -6, x: -12, y: 6 } },
 ];
 
@@ -89,7 +89,7 @@ export default function BioRow() {
                 }}
               >
                 <img src={p.src} alt={p.cap} style={{ height: 268, objectPosition: "50% 30%" }} />
-                <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 21, letterSpacing: "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: "normal", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: p.capSize ?? 21, letterSpacing: p.capSize ? "-0.6px" : "-1.47px", color: "#000", margin: "12px 0 0", lineHeight: p.capSize ? 1.05 : "normal", whiteSpace: p.capSize ? "normal" : "nowrap", overflow: "hidden", textOverflow: p.capSize ? undefined : "ellipsis" }}>
                   {p.cap}
                 </p>
               </div>
