@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ConnectedAppsMockup from "./ConnectedAppsMockup";
 import HoverSticker from "./HoverSticker";
 import WaveDraw from "./WaveDraw";
@@ -94,10 +93,6 @@ export default function V6() {
         @font-face { font-family: 'LucyOutline';     src: url('/fonts/lucy-outline.otf')      format('opentype'); font-display: block; }
         @font-face { font-family: 'LucyFont';        src: url('/fonts/lucy-font.otf')         format('opentype'); font-display: block; }
 
-        .v6-nav { position: fixed; top: 20px; right: 24px; z-index: 20; display: flex; gap: 6px; font-family: var(--font-inria-sans), serif; }
-        .v6-nav a { font-size: 14px; color: #0b4a52; text-decoration: none; padding: 5px 14px; border-radius: 100px; border: 1px solid rgba(11,74,82,0.25); opacity: 0.5; transition: opacity 0.15s, background 0.15s, color 0.15s; display: inline-flex; align-items: center; justify-content: center; }
-        .v6-nav a:hover { opacity: 0.75; }
-        .v6-nav a.active { background: #0b4a52; color: #fff; border-color: transparent; opacity: 1; }
 
         .v6-proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px; align-items: end; }
         .v6-proj-link { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 16px; flex: 1; min-width: 0; }
@@ -185,11 +180,6 @@ export default function V6() {
           .v6-polaroid img { height: 200px !important; }
         }
       `}</style>
-
-      <nav className="v6-nav">
-        <Link href="/v6" className="active">Concept 1</Link>
-        <Link href="/v8">Concept 3</Link>
-      </nav>
 
       <main className="v6-main" style={{
         background: "#fafaf6",
@@ -325,7 +315,7 @@ export default function V6() {
                       position: "absolute", left: 4, top: 20, right: 4,
                       transform: "rotate(-1.63deg)", transformOrigin: "top center",
                       background: "white",
-                      padding: 6,
+                      padding: 8,
                       borderRadius: 18,
                       boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
                     }}>
