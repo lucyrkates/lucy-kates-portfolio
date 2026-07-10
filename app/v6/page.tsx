@@ -101,9 +101,9 @@ export default function V6() {
         .v6-sticker-img:hover { transform: rotate(2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
         .v6-sticker-img-l:hover { transform: rotate(-2deg) translateY(-6px); filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
 
-        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease; }
+        .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transform-origin: top center; transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease; }
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
-        .v6-polaroid:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.18); }
+        .v6-polaroid:hover { transform: perspective(700px) rotateX(6deg); box-shadow: 0 8px 14px rgba(0,0,0,0.16); }
 
         .v6-tagline { color: #000; }
         .v6-hov { position: relative; display: inline-block; cursor: default; }
