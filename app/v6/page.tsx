@@ -103,7 +103,7 @@ export default function V6() {
 
         .v6-polaroid { background: white; border-radius: 4px; padding: 20px 16px 40px; box-shadow: -2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2); width: 250px; transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease; }
         .v6-polaroid img { width: 100%; height: 251px; object-fit: cover; display: block; }
-        .v6-polaroid:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 18px 40px rgba(0,0,0,0.24); }
+        .v6-polaroid:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.18); }
 
         .v6-tagline { color: #000; }
         .v6-hov { position: relative; display: inline-block; cursor: default; }
@@ -322,6 +322,14 @@ export default function V6() {
                       <img src={imgOutlookMock} alt="Microsoft LinkedIn integration"
                         style={{ width: "100%", height: "auto", display: "block", borderRadius: 12 }} />
                     </div>
+                    <span style={{
+                      position: "absolute", top: -10, right: 6, zIndex: 6,
+                      transform: "rotate(-6deg)",
+                      fontFamily: LUCY_FONT_BOLD, fontSize: 14, letterSpacing: "-0.7px",
+                      color: "#000", background: "#faa316",
+                      padding: "4px 12px 2px", borderRadius: 100,
+                      boxShadow: "-2px -2px 4px -4px rgba(0,0,0,0.25), 3px 2px 3.9px -2px rgba(0,0,0,0.2)",
+                    }}>Coming soon</span>
                   </HoverSticker>
                   <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <p style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 20, letterSpacing: "-1.6px", margin: 0, lineHeight: "normal", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>Microsoft &lt;&gt; LinkedIn integration</p>
@@ -382,7 +390,7 @@ export default function V6() {
               <p style={{
                 fontFamily: LUCY_OUTLINE, fontSize: "clamp(44px, 7vw, 72px)", letterSpacing: "0.02em",
                 color: "#000", textTransform: "uppercase", margin: 0, whiteSpace: "nowrap",
-              }}>Say hello</p>
+              }}>Say Hello!</p>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
               <a href="mailto:lucyrkates@gmail.com" className="v6-pill">Email</a>
