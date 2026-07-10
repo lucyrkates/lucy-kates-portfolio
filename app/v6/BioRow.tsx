@@ -58,7 +58,7 @@ export default function BioRow() {
           fontFamily: LUCY_FONT, fontSize: 26, lineHeight: "normal",
           letterSpacing: "-2.08px", color: "#000", margin: 0,
         }}>
-          6+ years across enterprise and consumer platforms. Currently leading design for credibility features on the LinkedIn profile, with past experience in enterprise SaaS and AI products. Brings systems thinking to ambiguous problems and cares deeply about equitable, human-centered design.
+          Designer with 6+ years of experience, currently leading design for credibility on the LinkedIn profile. I have an instinct for systems thinking and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins, and I bring curiosity, humor, and a passion to do good to my work.
         </p>
       </div>
 
