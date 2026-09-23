@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lucy Kates</title>
+<meta name="description" content="Lucy Kates — product designer." />
+<link rel="icon" href="app/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#eceee5;          /* primary text */
+    --card:#1f3622;         /* card background (V2) */
+    --btn-ink:#264228;      /* filled-button text */
+    --label:#e3dece;        /* section eyebrow labels */
+    --gutter:22px;
+    --cw:1040px;            /* content width; overridden per version below */
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  html, body{ margin:0; padding:0; }
+  body{
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    min-height:100vh;
+    background:#28442a;     /* #093016 frame softened by Figma's 50% overlay */
+    color:var(--ink);
+  }
+
+  /* ---------- version switching ---------- */
+  .view{ display:none; }
+  body[data-view="v1"] .view.v1,
+  body[data-view="v2"] .view.v2{ display:flex; }
+
+  /* content width per version: V1 is wider (bigger embed) and lines up with
+     the work section; V2 lines up with the two cards */
+  body[data-view="v1"]{ --cw:1120px; }
+  body[data-view="v2"]{ --cw:1040px; }
+
+  .view{
+    position:relative; width:100%;
+    min-height:100vh;
+    align-items:center;          /* vertical centering */
+    overflow:hidden;
+  }
+
+  /* fine monochromatic grain matching the Figma noise fill */
+  .grain{
+    position:absolute; inset:0; pointer-events:none; z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1' intercept='-0.232'/%3E%3CfeFuncG type='linear' slope='1' intercept='-0.232'/%3E%3CfeFuncB type='linear' slope='1' intercept='-0.232'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:220px 220px;
+    mix-blend-mode:overlay; opacity:.25;
+  }
+
+  /* centered content frame (matches the 1040 Figma content area) */
+  .frame{
+    position:relative; z-index:1;
+    width:min(var(--cw), calc(100% - 2*var(--gutter)));
+    margin-inline:auto;
+    padding-block:64px;
+  }
+
+  /* ---------- shared typography ---------- */
+  .name{
+    font-family:'Cabin', system-ui, sans-serif; font-weight:700;
+    font-size:32px; line-height:1.1; opacity:.9; margin:0;
+  }
+  .eyebrow{
+    /* same styling as the .job-date text, but uppercase */
+    font-family:'Cabin', system-ui, sans-serif; font-weight:400;
+    font-size:14px; letter-spacing:.28px; text-transform:uppercase;
+    color:var(--ink); opacity:.6; margin:0;
+  }
+  .bio{ font-size:16px; line-height:1.45; letter-spacing:-0.32px; opacity:.9; margin:0; }
+  .bio-multi{ display:flex; flex-direction:column; }
+  .bio-multi p{ margin:0; }
+  .bio-multi p + p{ margin-top:1.1em; }
+
+  /* ---------- links / buttons ---------- */
+  .links{ display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+  .ico{ width:16px; height:16px; flex:0 0 auto; display:block; }
+  .btn{
+    display:inline-flex; align-items:center; gap:4px;
+    height:32px; padding:4px 8px; border-radius:4px;
+    background:var(--ink); color:var(--btn-ink);
+    font-family:'Cabin', system-ui, sans-serif; font-size:14px; letter-spacing:.28px;
+    text-decoration:none; opacity:.6; transition:opacity .18s ease;
+  }
+  .btn:hover, .btn:focus-visible{ opacity:1; outline:none; }
+  .link{
+    display:inline-flex; align-items:center; gap:4px; height:32px;
+    color:var(--ink); text-decoration:none; opacity:.6;
+    font-family:'Cabin', system-ui, sans-serif; font-size:14px; letter-spacing:.28px;
+    transition:opacity .18s ease;
+  }
+  .link:hover, .link:focus-visible{ opacity:1; outline:none; }
+
+  /* ---------- experience blocks (V2 / V3) ---------- */
+  .job{ display:flex; flex-direction:column; gap:12px; }
+  .job-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .job-title{ font-family:'Cabin', system-ui, sans-serif; font-weight:700; font-size:20px; opacity:.9; }
+  .job-date{ font-family:'Cabin', system-ui, sans-serif; font-size:14px; letter-spacing:.28px; opacity:.6; white-space:nowrap; }
+  .job-desc{ font-size:14px; line-height:1.45; letter-spacing:-0.28px; opacity:.6; margin:0; }
+  .exp-more{ margin-top:auto; }
+
+  /* ---------- V1 : single left column ---------- */
+  .v1-col{ display:flex; flex-direction:column; align-items:flex-start; gap:24px; }
+  .v1-col .bio{ max-width:681px; }
+
+  /* ---------- V2 : heading + two cards ---------- */
+  .v2 .name{ margin-bottom:24px; }
+  .cards{ display:flex; gap:24px; align-items:stretch; }
+  .card{ background:var(--card); border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:40px; }
+  .card-main{ flex:688 1 0; min-width:0; }
+  .card-side{ flex:328 1 0; min-width:0; }
+
+  /* ---------- version toggle ---------- */
+  .switcher{
+    position:fixed; top:16px; right:16px; z-index:50;
+    display:inline-flex; gap:2px; padding:3px;
+    background:rgba(9,26,15,.55); backdrop-filter:blur(8px);
+    border:1px solid rgba(236,238,229,.18); border-radius:999px;
+    font-family:'Cabin', system-ui, sans-serif;
+  }
+  .switcher button{
+    appearance:none; border:0; cursor:pointer;
+    padding:6px 13px; border-radius:999px;
+    font-size:13px; font-weight:500; color:var(--ink); background:transparent;
+    opacity:.7; transition:background .18s ease, color .18s ease, opacity .18s ease;
+  }
+  .switcher button:hover{ opacity:1; }
+  body[data-view="v1"] .switcher [data-v="v1"],
+  body[data-view="v2"] .switcher [data-v="v2"]{ background:var(--ink); color:#20381f; opacity:1; }
+
+  /* ---------- embedded Figma prototype (shared, below the hero) ---------- */
+  .work{
+    position:relative; background:#20381f;
+    border-top:1px solid rgba(236,238,229,.14);
+    padding:72px 0 88px;
+  }
+  /* same width + centering as .frame, so the work section lines up with the
+     hero content of whichever version is active */
+  .work-inner{ width:min(var(--cw), calc(100% - 2*var(--gutter))); margin-inline:auto; }
+  .work-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+  .work-head h2{ font-family:'Cabin', system-ui, sans-serif; font-weight:700; font-size:24px; opacity:.9; margin:0; }
+  .figma-link{ display:inline-flex; align-items:center; gap:5px; font-family:'Cabin', system-ui, sans-serif; font-size:15px; letter-spacing:.32px; color:var(--ink); opacity:.8; text-decoration:none; transition:opacity .18s ease; }
+  .figma-link:hover{ opacity:1; text-decoration:underline; }
+  .embed{
+    /* 16:9 to match the 1920x1080 prototype frames; the iframe is made taller
+       so Figma's white footer bar is clipped away by overflow:hidden */
+    position:relative; width:100%; padding-top:56.25%;
+    border-radius:8px; overflow:hidden;
+    border:1px solid rgba(236,238,229,.22); background:#0e2414;
+  }
+  .embed iframe{ position:absolute; top:0; left:0; width:100%; height:calc(100% + 52px); border:0; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:820px){
+    .cards{ flex-direction:column; }
+    .card-main, .card-side{ flex:1 1 auto; width:100%; }
+    .exp-more{ margin-top:0; }
+  }
+  @media (max-width:520px){
+    .name{ font-size:26px; }
+    .bio{ font-size:15px; }
+    .links{ flex-direction:column; align-items:flex-start; }
+    .frame{ padding-block:48px; }
+    .work{ padding:48px 0 60px; }
+  }
+</style>
+</head>
+<body data-view="v1">
+
+  <!-- icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ic-arrow" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8.75015 12.19L11.4702 9.47C11.5388 9.39631 11.6216 9.33721 11.7136 9.29622C11.8056 9.25523 11.9049 9.23318 12.0056 9.23141C12.1063 9.22963 12.2064 9.24816 12.2998 9.28588C12.3931 9.3236 12.478 9.37974 12.5492 9.45096C12.6204 9.52218 12.6766 9.60701 12.7143 9.7004C12.752 9.79379 12.7705 9.89382 12.7687 9.99452C12.767 10.0952 12.7449 10.1945 12.7039 10.2865C12.6629 10.3785 12.6038 10.4613 12.5302 10.53L8.53015 14.53C8.38953 14.6705 8.1989 14.7493 8.00015 14.7493C7.8014 14.7493 7.61078 14.6705 7.47015 14.53L3.47015 10.53C3.39647 10.4613 3.33736 10.3785 3.29637 10.2865C3.25538 10.1945 3.23334 10.0952 3.23156 9.99452C3.22979 9.89382 3.24831 9.79379 3.28603 9.7004C3.32375 9.60701 3.3799 9.52218 3.45112 9.45096C3.52233 9.37974 3.60717 9.3236 3.70056 9.28588C3.79394 9.24816 3.89397 9.22963 3.99468 9.23141C4.09538 9.23318 4.19469 9.25523 4.28669 9.29622C4.37869 9.33721 4.46149 9.39631 4.53015 9.47L7.25015 12.19V2.5C7.25015 2.30109 7.32917 2.11032 7.46982 1.96967C7.61048 1.82902 7.80124 1.75 8.00015 1.75C8.19907 1.75 8.38983 1.82902 8.53048 1.96967C8.67114 2.11032 8.75015 2.30109 8.75015 2.5V12.19Z"/>
+    </symbol>
+    <symbol id="ic-ext" viewBox="0 0 16 16">
+      <path fill="none" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" d="M6.66667 3.33333H5.46667C4.72 3.33333 4.34667 3.33333 4.06133 3.47867C3.81046 3.6065 3.6065 3.81046 3.47867 4.06133C3.33333 4.34667 3.33333 4.72 3.33333 5.46667V10.5333C3.33333 11.28 3.33333 11.6533 3.47867 11.9387C3.6065 12.1895 3.81046 12.3935 4.06133 12.5213C4.346 12.6667 4.71933 12.6667 5.46467 12.6667H10.5353C11.2807 12.6667 11.6533 12.6667 11.938 12.5213C12.1893 12.3933 12.3933 12.1893 12.5213 11.9387C12.6667 11.6533 12.6667 11.2807 12.6667 10.5353V9.33333M10 2.66667H13.3333V6M13.3333 2.66667L8.66667 7.33333"/>
+    </symbol>
+  </svg>
+
+  <nav class="switcher" aria-label="Home page version">
+    <button type="button" data-v="v1">V1</button>
+    <button type="button" data-v="v2">V2</button>
+  </nav>
+
+  <!-- ============ VERSION 1 : single column ============ -->
+  <section class="view v1">
+    <div class="grain"></div>
+    <div class="frame">
+      <div class="v1-col">
+        <h1 class="name">Lucy Kates</h1>
+        <p class="bio">I&rsquo;m a product designer with 6+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins. In addition to the core skills of a good Product Designer&trade;, I bring enthusiasm, humor, and a passion to do good to my work.</p>
+        <div class="links">
+          <a class="btn" href="#work">View work sample <svg class="ico"><use href="#ic-arrow"/></svg></a>
+          <a class="link" href="https://www.linkedin.com/in/lucyrkates/" target="_blank" rel="noopener">Linkedin profile <svg class="ico"><use href="#ic-ext"/></svg></a>
+          <a class="link" href="https://lucyrkates.github.io/lucy-resume/" target="_blank" rel="noopener">Resume <svg class="ico"><use href="#ic-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VERSION 2 : heading + two cards ============ -->
+  <section class="view v2">
+    <div class="grain"></div>
+    <div class="frame">
+      <h1 class="name">Lucy Kates</h1>
+      <div class="cards">
+        <div class="card card-main">
+          <p class="eyebrow">Overview</p>
+          <div class="bio bio-multi">
+            <p>I&rsquo;m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins. In addition to the core skills of a good Product Designer&trade;, I bring enthusiasm, humor, and a desire to do good to my work.</p>
+            <p>I'm looking for my next role in climate or civic tech, where I can put inclusive design to work on environmental and social service problems.</p>
+            <p>Outside of work, I'm usually hiking, running, sewing, or eating cereal.</p>
+          </div>
+          <div class="links">
+            <a class="btn" href="#work">View work sample <svg class="ico"><use href="#ic-arrow"/></svg></a>
+            <a class="link" href="https://lucyrkates.github.io/lucy-resume/" target="_blank" rel="noopener">Resume <svg class="ico"><use href="#ic-ext"/></svg></a>
+          </div>
+        </div>
+        <div class="card card-side">
+          <p class="eyebrow">Experience</p>
+          <div class="job">
+            <div class="job-head"><span class="job-title">LinkedIn</span><span class="job-date">2020-2026</span></div>
+            <p class="job-desc">Senior product designer on profile &middot; founding designer on the AI incubator &middot; designer on Sales Navigator</p>
+          </div>
+          <div class="job">
+            <div class="job-head"><span class="job-title">Uber</span><span class="job-date">2019-2020</span></div>
+            <p class="job-desc">Contract product designer on the consumer team &middot; product design intern on the rewards team</p>
+          </div>
+          <a class="link exp-more" href="https://www.linkedin.com/in/lucyrkates/" target="_blank" rel="noopener">View more on Linkedin <svg class="ico"><use href="#ic-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ shared: embedded Figma prototype ============ -->
+  <section class="work" id="work">
+    <div class="work-inner">
+      <div class="work-head">
+        <h2>Work overview</h2>
+        <a class="figma-link" href="https://www.figma.com/proto/qlszMRlsGz2ZKTFLQLVFtd/Lucy-Kates-Work-Overview?node-id=1-83143&t=KJ13Wle7FeYWZddA-0&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A83143&page-id=0%3A1" target="_blank" rel="noopener">Open in Figma <svg class="ico"><use href="#ic-ext"/></svg></a>
+      </div>
+      <div class="embed">
+        <iframe
+          title="Lucy Kates — Work Overview prototype"
+          src="https://embed.figma.com/proto/qlszMRlsGz2ZKTFLQLVFtd/Lucy-Kates-Work-Overview?node-id=1-83143&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A83143&page-id=0%3A1&embed-host=share"
+          allowfullscreen
+          loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var body=document.body, KEY='lk-home-view';
+      try{ var s=localStorage.getItem(KEY); if(s==='v1'||s==='v2') body.setAttribute('data-view',s); }catch(e){}
+      document.querySelectorAll('.switcher button').forEach(function(b){
+        b.addEventListener('click', function(){
+          var v=b.getAttribute('data-v');
+          body.setAttribute('data-view', v);
+          try{ localStorage.setItem(KEY, v); }catch(e){}
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
