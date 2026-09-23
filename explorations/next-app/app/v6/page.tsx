@@ -350,11 +350,14 @@ export default function V6() {
                 shadowSize={35} shadowSpacing="2.8px"
                 wave={imgWaveAbout}
               />
-              <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
-                I live in Berkeley, California and am originally from Philadelphia (🦅 Go Birds!). I originally went to design school because I believed design was the perfect combination of creative and technical thinking. Over the past 10 years, my thinking has evolved and I now am motivated by how design can have a positive impact in the world.
+              <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT_BOLD, fontSize: 22, letterSpacing: "-1.76px", lineHeight: "normal", color: "#000", margin: 0 }}>
+                A bit about who I am and why I am a designer:
               </p>
               <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
-                Outside of work, I love to be outside! Whether it is hiking, running, biking, or going for a walk, I love being in nature. I have also recently started sewing! Be sure to ask my about my recent projects..!
+                I currently live in Berkeley, California, but grew up in Philadelphia (🦅 Go Birds!). I went to design school because I believed design was the perfect mix of creative and technical thinking. I learned design fundamentals, graphic design, research methods, and of course the iterative design process. Over the past 10 years, what started as a desire to find a major I'd enjoy turned into something deeper: a drive to fix the broken experiences that make people's lives harder. I'm a fierce believer in the good that design can do, and I want to use whatever power I hold as a designer to create it.
+              </p>
+              <p className="v6-about-copy" style={{ fontFamily: LUCY_FONT, fontSize: 24, letterSpacing: "-1.92px", lineHeight: "normal", color: "#000", margin: 0 }}>
+                Outside of work, I love being outside. You can find me hiking, running, biking, or going for my 2pm walk. In another life, I'd love to be a park ranger. I've recently picked up sewing too, so be sure to ask me about my latest projects 👀
               </p>
             </div>
 

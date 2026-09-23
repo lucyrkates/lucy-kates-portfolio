@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# lucy-kates-portfolio
 
-## Getting Started
+Lucy Kates' portfolio — deployed at **lucyrkates.com** (Vercel).
 
-First, run the development server:
+## Structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **`index.html`** — the live site (a static page). This is what deploys to lucyrkates.com.
+- **`favicon.ico`** — site icon.
+- **`explorations/`** — past design explorations, kept for reference (not deployed):
+  - **`v1/`** — the single-column early layout of the current design.
+  - **`next-app/`** — the previous live site: a full Next.js app ("Journal" / v6, plus v7, v8, and a "Basic" variant). Run it with `npm install && npm run dev` inside that folder. Preserved in case of a future rebuild in Next.js.
+  - **`assets/`** — loose mock images and source art.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing the live site
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open `index.html`, edit, save. No build step — it's static. Push to `main` to deploy.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## History
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The pre-restructure state (Next.js app as the live site) is tagged **`v6-live`**.
