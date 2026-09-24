@@ -8,10 +8,8 @@ export const bio = [
 
 // Tailored bios for application-specific pages (e.g. /costar).
 export const costarBio = [
-  "I’m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins.",
-  "On top of the usual Product Designer™ skills, I bring enthusiasm, humor, and a real desire to do good.",
-  "I'm looking for my next role at a company that makes room for delight, is a little weird, and never stops pushing to innovate.",
-  "Outside of work, you'll usually find me hiking, running, sewing, or eating cereal.",
+  "I’m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins. On top of the usual Product Designer™ skills, I bring enthusiasm, humor, and a real desire to do good. Outside of work, you'll usually find me hiking, running, sewing, or eating cereal.",
+  "I'm looking for my next role at a company that makes room for delight, is a little weird, and never stops pushing to innovate. Please reach out if this sounds like your company!",
 ];
 
 export const jobs = [
