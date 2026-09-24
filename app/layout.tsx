@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cabin, IBM_Plex_Mono } from "next/font/google";
+import EntranceGate from "./components/EntranceGate";
 import "./globals.css";
 
 const cabin = Cabin({
@@ -25,8 +26,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cabin.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${cabin.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <noscript>
+          <style>{`.reveal{animation-play-state:running}`}</style>
+        </noscript>
+        {children}
+        <EntranceGate />
+      </body>
     </html>
   );
 }

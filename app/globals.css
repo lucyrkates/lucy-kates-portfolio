@@ -128,27 +128,27 @@ body{
 }
 
 /* ---------- entrance animation ----------
-   Elements with .reveal fade up out of a soft blur on load. Each sets its
-   own start time via --d, so the page settles in a quiet top-to-bottom
-   cascade: name → card surfaces → card contents. */
+   Plays in one quick sequence: background (already painted) → name →
+   grain texture → card surfaces → card text. Each .reveal sets its start
+   time via --d. Everything holds hidden until the web fonts have loaded
+   (html.ready, set in layout.tsx), so text never re-wraps mid-animation. */
 @keyframes reveal{
-  from{ opacity:0; transform:translateY(10px); filter:blur(6px); }
+  from{ opacity:0; transform:translateY(8px); filter:blur(5px); }
 }
 @keyframes surface{
-  from{ opacity:0; transform:translateY(14px) scale(.985); }
+  from{ opacity:0; transform:translateY(12px) scale(.985); }
 }
-@keyframes grain-in{
+@keyframes fade{
   from{ opacity:0; }
 }
 .reveal{
-  animation:reveal .9s cubic-bezier(.16,1,.3,1) var(--d, 0ms) both;
+  animation:reveal .7s cubic-bezier(.16,1,.3,1) var(--d, 0ms) both;
+  animation-play-state:paused;
 }
-.card.reveal{
-  animation-name:surface;
-  animation-duration:1.1s;
-}
-.grain{ animation:grain-in 1.6s ease-out both; }
+.card.reveal{ animation-name:surface; animation-duration:.8s; }
+.grain.reveal{ animation-name:fade; animation-duration:.8s; animation-timing-function:ease-out; }
+.ready .reveal{ animation-play-state:running; }
 
 @media (prefers-reduced-motion: reduce){
-  .reveal, .grain{ animation:none; }
+  .reveal{ animation:none; }
 }
