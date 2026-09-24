@@ -6,13 +6,21 @@ export const bio = [
   "Outside of work, I'm usually hiking, running, sewing, or eating cereal.",
 ];
 
+// Tailored bios for application-specific pages (e.g. /costar).
+export const costarBio = [
+  "I’m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins.",
+  "On top of the usual Product Designer™ skills, I bring enthusiasm, humor, and a real desire to do good.",
+  "I'm looking for my next role at a company that makes room for delight, is a little weird, and never stops pushing to innovate.",
+  "Outside of work, you'll usually find me hiking, running, sewing, or eating cereal.",
+];
+
 export const jobs = [
   {
     company: "LinkedIn",
     dates: "2020-2026",
     roles: [
       "Senior product designer on profile",
-      "Founding designer on the AI incubator",
+      "Founding designer on an AI incubator team",
       "Designer on Sales Navigator",
     ],
   },

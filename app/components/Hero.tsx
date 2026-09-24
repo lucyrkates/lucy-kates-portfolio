@@ -1,8 +1,8 @@
-import { bio, jobs, links } from "../content";
+import { bio as defaultBio, jobs, links } from "../content";
 import { ArrowDownIcon, ExternalLink } from "./Icons";
 import { delay } from "./reveal";
 
-export default function Hero() {
+export default function Hero({ bio = defaultBio }: { bio?: string[] }) {
   return (
     <section className="view v2">
       <div className="grain reveal" style={delay(250)} />
