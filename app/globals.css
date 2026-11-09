@@ -94,7 +94,7 @@ body{
 
 /* ---------- embedded Figma prototype (below the hero) ---------- */
 .work{
-  position:relative; background:#20381f;
+  position:relative; background:var(--card);
   border-top:1px solid rgba(236,238,229,.14);
   padding:72px 0 88px;
 }
