@@ -1,8 +1,7 @@
 // Site copy and links — edit here to update the page.
 
 export const bio = [
-  "I’m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My design super powers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing at the margins. In addition to the core skills of a good Product Designer™, I bring enthusiasm, humor, and a desire to do good to my work.",
-  "I'm looking for my next role in climate or civic tech, where I can put inclusive design to work on environmental and social service problems.",
+  "I’m a product designer with 7+ years of experience, currently designing new features for the LinkedIn profile. My superpowers lie in systems thinking, communicating complex ideas, and distilling the core problem worth solving. I'm motivated by inclusive design and designing for people at the margins. In my work, I bring enthusiasm, humor, and a desire to do good.",
   "Outside of work, I'm usually hiking, running, sewing, or eating cereal.",
 ];
 
